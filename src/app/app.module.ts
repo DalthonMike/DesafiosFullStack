@@ -7,15 +7,13 @@ import { CardModule } from 'primeng/card';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ListaBolsistaComponent } from './components/lista-bolsista/lista-bolsista/lista-bolsista.component';
-// import { ListaBolsistaComponent } from './components/lista-bolsista/lista-bolsista.component';
+import { ListaBolsistaComponent } from './components/lista-bolsista/lista-bolsista.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ListaBolsistaComponent,
-    // ListaBolsistaComponent,
   ],
   imports: [
     BrowserModule,
