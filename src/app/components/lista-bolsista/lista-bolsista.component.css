@@ -1,0 +1,14 @@
+.table-lista {
+    margin: 10vh;
+    min-width: 100vh;
+}
+
+.card-header {
+    padding: 0;
+}
+
+.botoes-table {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+}
