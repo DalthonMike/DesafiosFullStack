@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DialogService} from "primeng/dynamicdialog";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-lista-bolsista',
@@ -7,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaBolsistaComponent implements OnInit {
   pessoa: any;
+  displayModal: any;
 
   constructor() { }
 
@@ -16,6 +19,18 @@ export class ListaBolsistaComponent implements OnInit {
 
   editar(pessoa: any) {
     
+  }
+
+  controleModal(e: any) {
+    if (e == true) {
+      this.displayModal = true;
+    } else if (e == false) {
+      this.displayModal = false;
+    }
+  }
+
+  salvar() {
+
   }
 }
 
