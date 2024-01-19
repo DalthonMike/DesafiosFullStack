@@ -5,6 +5,7 @@ import { BolsistaService } from "../../service/bolsista.service";
 import { ModalCadastroBolsistaComponent } from "../modals/Bolsista/modal-cadastro-bolsista/modal-cadastro-bolsista.component";
 import { BolsistaModel } from "../../model/bolsista.model";
 import { ModalVisualizacaoBolsistaComponent } from "../modals/Bolsista/modal-visualizacao-bolsista/modal-visualizacao-bolsista.component";
+import { ModalEdicaoBolsistaComponent } from "../modals/Bolsista/modal-edicao-bolsista/modal-edicao-bolsista.component";
 
 @Component({
   selector: 'app-lista-bolsista',
@@ -38,10 +39,20 @@ export class ListaBolsistaComponent implements OnInit {
   }
 
   editar(id: any) {
-
+    this.dialogService.open(ModalEdicaoBolsistaComponent, {
+      header: 'Editar Bolsista',
+      width: 'auto',
+      height: 'auto',
+      modal: true,
+      baseZIndex: 10000,
+      closeOnEscape: true,
+      closable: true,
+      //(data) irá enviar o id do bolsista para consulta da visualização;
+      data: id,
+    });
   }
 
-  visualizar(bolsista: any) {
+  visualizar(id: any) {
     this.dialogService.open(ModalVisualizacaoBolsistaComponent, {
       header: 'Visualizar Bolsista',
       width: 'auto',
@@ -51,8 +62,12 @@ export class ListaBolsistaComponent implements OnInit {
       closeOnEscape: true,
       closable: true,
       //(data) irá enviar o id do bolsista para consulta da visualização;
-      data: bolsista,
+      data: id,
     });
+  }
+
+  deletar(bolsista: any) {
+    
   }
 }
 

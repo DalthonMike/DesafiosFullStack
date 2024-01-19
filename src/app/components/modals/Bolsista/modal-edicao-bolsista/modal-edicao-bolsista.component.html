@@ -1,0 +1,125 @@
+<form class="needs-validation"
+      name="bolsistaForm"
+      #bolsistaForm="ngForm"
+      (ngSubmit)="onSubmit(bolsistaForm)">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <h6>Nome:</h6>
+            </div>
+            <div class="col-12">
+                <div>
+                    <input type="text"
+                           id="nome"
+                           name="nome"
+                           #nome="ngModel"
+                           class="form-control"
+                           ngModel="{{ resource?.nome }}"
+                           placeholder="Digite o seu nome completo"
+                           [ngClass]="{'ng-invalid ng-dirty': nome.invalid && nome.touched}"
+                           required pInputText appApenasLetrasDirective/>
+                </div>
+                <div *ngIf="nome.invalid && (nome.dirty || nome.touched)"
+                     class="alert" style="padding: 0; margin: 0">
+                    <span class="alert-text">O campo é obrigatório!</span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-5">
+                <h6>Tipo de identificador:</h6>
+            </div>
+            <div class="col-12">
+                <p-dropdown [options]="identificadores"
+                            id="tipoIdentificador"
+                            name="tipoIdentificador"
+                            #tipoIdentificador="ngModel"
+                            ngModel="{{ resource?.tipoIdentificador }}"
+                            [required]="!resource?.tipoIdentificador"
+                            [ngClass]="{'ng-invalid ng-dirty': tipoIdentificador.invalid && tipoIdentificador.touched}"
+                            placeholder="Selecione" [style]="{ 'width': '100%' }"></p-dropdown>
+                <div *ngIf="tipoIdentificador.invalid && (tipoIdentificador.dirty || tipoIdentificador.touched)"
+                     class="alert" style="padding: 0; margin: 0">
+                    <span class="alert-text">O campo é obrigatório!</span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-5">
+                <h6>Banco:</h6>
+            </div>
+            <div class="col-12">
+                <p-dropdown [options]="bancos"
+                            id="banco"
+                            name="banco"
+                            #banco="ngModel"
+                            ngModel="{{ resource?.banco }}"
+                            [required]="!resource?.banco"
+                            [ngClass]="{'ng-invalid ng-dirty': banco.invalid && banco.touched}"
+                            placeholder="Selecione" [style]="{ 'width': '100%' }"></p-dropdown>
+                <div *ngIf="banco.invalid && (banco.dirty || banco.touched)"
+                     class="alert" style="padding: 0; margin: 0">
+                    <span class="alert-text">O campo é obrigatório!</span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-2">
+                <h6>Agência:</h6>
+            </div>
+            <div class="col-12">
+                <div>
+                    <input type="text"
+                           id="agencia"
+                           name="agencia"
+                           #agencia="ngModel"
+                           class="form-control"
+                           ngModel="{{ resource?.agencia }}"
+                           placeholder="Digite o número da agência"
+                           [ngClass]="{'ng-invalid ng-dirty': agencia.invalid && agencia.touched}"
+                           required pInputText appApenasNumerosDirective/>
+                </div>
+                <div *ngIf="agencia.invalid && (agencia.dirty || agencia.touched)"
+                     class="alert" style="padding: 0; margin: 0">
+                    <span class="alert-text">O campo é obrigatório!</span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-2">
+                <h6>Conta:</h6>
+            </div>
+            <div class="col-12">
+                <input type="text"
+                       id="conta"
+                       name="conta"
+                       #conta="ngModel"
+                       class="form-control"
+                       ngModel="{{ resource?.conta }}"
+                       placeholder="Digite o número da conta"
+                       [ngClass]="{'ng-invalid ng-dirty': conta.invalid && conta.touched}"
+                       required pInputText appApenasNumerosDirective/>
+                <div *ngIf="conta.invalid && (conta.dirty || conta.touched)"
+                     class="alert" style="padding: 0; margin: 0">
+                    <span class="alert-text">O campo é obrigatório!</span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col">
+                <button pButton pRipple
+                        label="Cancelar"
+                        (click)="cancelar()"
+                        float="left"
+                        class="p-button-secondary" style="float: right; flex: 1 1 auto"
+                        icon="pi pi-times"></button>
+            </div>
+            <div class=".col-auto">
+                <button pButton pRipple
+                        label="Salvar"
+                        type="submit" style="float: right; margin-right: 15px"
+                        icon="pi pi-check"></button>
+            </div>
+        </div>
+    </div>
+</form>

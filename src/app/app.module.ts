@@ -22,6 +22,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ListaBolsistaComponent } from './components/lista-bolsista/lista-bolsista.component';
 import { ModalCadastroBolsistaComponent } from './components/modals/Bolsista/modal-cadastro-bolsista/modal-cadastro-bolsista.component';
 import { ModalVisualizacaoBolsistaComponent } from "./components/modals/Bolsista/modal-visualizacao-bolsista/modal-visualizacao-bolsista.component";
+import { ModalEdicaoBolsistaComponent } from "./components/modals/Bolsista/modal-edicao-bolsista/modal-edicao-bolsista.component";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ModalVisualizacaoBolsistaComponent } from "./components/modals/Bolsista
     ListaBolsistaComponent,
     ModalCadastroBolsistaComponent,
     ModalVisualizacaoBolsistaComponent,
+    ModalEdicaoBolsistaComponent,
     ApenasLetrasDirective,
     ApenasNumerosDirective
   ],

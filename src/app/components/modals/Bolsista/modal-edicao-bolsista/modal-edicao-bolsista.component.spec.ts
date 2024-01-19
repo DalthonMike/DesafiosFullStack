@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalVisualizacaoBolsistaComponent } from './modal-visualizacao-bolsista.component';
-import { BrowserAnimationsModule, NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { ModalEdicaoBolsistaComponent } from './modal-edicao-bolsista.component';
+import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "../../../../app-routing.module";
 import { ButtonModule } from "primeng/button";
@@ -18,13 +18,13 @@ import { HttpClientModule } from "@angular/common/http";
 import { InputTextModule } from "primeng/inputtext";
 import { ToastrModule } from "ngx-toastr";
 
-describe('ModalVisualizacaoBolsistaComponent', () => {
-  let component: ModalVisualizacaoBolsistaComponent;
-  let fixture: ComponentFixture<ModalVisualizacaoBolsistaComponent>;
+describe('ModalEdicaoBolsistaComponent', () => {
+  let component: ModalEdicaoBolsistaComponent;
+  let fixture: ComponentFixture<ModalEdicaoBolsistaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ModalVisualizacaoBolsistaComponent],
+      declarations: [ModalEdicaoBolsistaComponent],
       providers: [
           DialogService,
           BolsistaService,
@@ -45,7 +45,7 @@ describe('ModalVisualizacaoBolsistaComponent', () => {
         HttpClientModule,
         FormsModule,
         InputTextModule,
-        ToastrModule.forRoot(),
+        ToastrModule.forRoot()
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
@@ -53,7 +53,7 @@ describe('ModalVisualizacaoBolsistaComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalVisualizacaoBolsistaComponent);
+    fixture = TestBed.createComponent(ModalEdicaoBolsistaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
