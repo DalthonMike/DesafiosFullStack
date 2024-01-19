@@ -24,4 +24,10 @@ export class BolsistaService {
       observe: 'response',
     });
   }
+
+    buscarPorId(id: number) {
+      return this.http.post<any>(`${this.pathBase}/bolsista/${id}`, {
+        observe: 'response',
+      });
+    }
 }

@@ -15,7 +15,7 @@
                            #nome="ngModel"
                            class="form-control"
                            [(ngModel)]="resource.nome"
-                           placeholder="digite o seu nome completo"
+                           placeholder="Digite o seu nome completo"
                            [ngClass]="{'ng-invalid ng-dirty': nome.invalid && nome.touched}"
                            required pInputText appApenasLetrasDirective/>
                 </div>
@@ -75,6 +75,7 @@
                            #agencia="ngModel"
                            class="form-control"
                            [(ngModel)]="resource.agencia"
+                           placeholder="Digite o número da agência"
                            [ngClass]="{'ng-invalid ng-dirty': agencia.invalid && agencia.touched}"
                            required pInputText appApenasNumerosDirective/>
                 </div>
@@ -95,6 +96,7 @@
                        #conta="ngModel"
                        class="form-control"
                        [(ngModel)]="resource.conta"
+                       placeholder="Digite o número da conta"
                        [ngClass]="{'ng-invalid ng-dirty': conta.invalid && conta.touched}"
                        required pInputText appApenasNumerosDirective/>
                 <div *ngIf="conta.invalid && (conta.dirty || conta.touched)"
@@ -103,16 +105,19 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="padding-top: 10px">
-            <div class="col" style="padding-right: 5px">
+        <div class="row" style="margin-top: 10px">
+            <div class="col">
                 <button pButton pRipple
                         label="Cancelar"
                         (click)="cancelar()"
-                        class="p-button-secondary" style="float: right"
+                        float="left"
+                        class="p-button-secondary" style="float: right; flex: 1 1 auto"
                         icon="pi pi-times"></button>
             </div>
-            <div class="col-3">
-                <button pButton pRipple type="submit" label="Salvar" style="float: right"
+            <div class=".col-auto">
+                <button pButton pRipple
+                        label="Salvar"
+                        type="submit" style="float: right; margin-right: 15px"
                         icon="pi pi-check"></button>
             </div>
         </div>

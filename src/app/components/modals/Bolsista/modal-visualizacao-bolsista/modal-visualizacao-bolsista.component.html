@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <h6>Nome:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <input type="text"
+                       id="nome"
+                       name="nome"
+                       class="form-control"
+                       ngModel="{{ dadosBolsista?.nome }}"
+                       pInputText disabled appApenasLetrasDirective/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-5">
+            <h6>Tipo de identificador:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <input type="text"
+                       id="tipoIdentificador"
+                       name="tipoIdentificador"
+                       class="form-control"
+                       ngModel="{{ dadosBolsista?.tipoIdentificador }}"
+                       pInputText disabled appApenasLetrasDirective/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-5">
+            <h6>Banco:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <input type="text"
+                       id="banco"
+                       name="banco"
+                       class="form-control"
+                       ngModel="{{ dadosBolsista?.banco }}"
+                       pInputText disabled appApenasLetrasDirective/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-2">
+            <h6>Agência:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <div>
+                    <input type="text"
+                           id="agencia"
+                           name="tipoIdentificador"
+                           class="form-control"
+                           ngModel="{{ dadosBolsista?.agencia }}"
+                           pInputText disabled appApenasLetrasDirective/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-5">
+            <h6>Conta:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <input type="text"
+                       id="conta"
+                       name="conta"
+                       class="form-control"
+                       ngModel="{{ dadosBolsista?.conta }}"
+                       pInputText disabled appApenasLetrasDirective/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 10px">
+        <div class="col">
+            <button pButton pRipple
+                    label="Sair"
+                    style="float: right"
+                    (click)="sair()"
+                    icon="pi pi-times"></button>
+        </div>
+    </div>
+</div>
+

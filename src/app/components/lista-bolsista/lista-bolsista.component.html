@@ -11,12 +11,12 @@
             <p-table class="card" [value]="bolsista" styleClass="p-datatable-sm" responsiveLayout="scroll">
                 <ng-template pTemplate="caption">
                     <div class="row flex align-items-center justify-content-between">
-                        <div class="col-2">
+                        <div class="col-6">
                             <h5 style="margin-bottom: 5px;">Lista de bolsistas</h5>
                         </div>
-                        <div class="col-2">
+                        <div class="col-6">
                             <button pButton pRipple
-                                    type="button" style="width: 58%;
+                                    type="button" style="width: 20%;
                                      float: right"
                                     label="Ver todos"
                                     class="p-button-secondary p-button-text">
@@ -46,7 +46,7 @@
                                 <button style="margin-right: 10px"
                                         pButton type="button"
                                         pTooltip="Visualizar"
-                                        icon="pi pi-eye" (click)="editar(bolsista)"
+                                        icon="pi pi-eye" (click)="visualizar(bolsista)"
                                         class="botoes-table p-button-rounded p-button-help p-button-outlined"></button>
 
                                 <button style="margin-right: 10px"

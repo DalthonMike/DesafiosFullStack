@@ -15,12 +15,13 @@ import { ToastrModule, ToastrService } from "ngx-toastr";
 
 import { ApenasLetrasDirective } from "./components/directives/olny-text";
 import { ApenasNumerosDirective } from "./components/directives/only-numbers";
+import { DialogService } from "primeng/dynamicdialog";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ListaBolsistaComponent } from './components/lista-bolsista/lista-bolsista.component';
-import { DialogService } from "primeng/dynamicdialog";
 import { ModalCadastroBolsistaComponent } from './components/modals/Bolsista/modal-cadastro-bolsista/modal-cadastro-bolsista.component';
+import { ModalVisualizacaoBolsistaComponent } from "./components/modals/Bolsista/modal-visualizacao-bolsista/modal-visualizacao-bolsista.component";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ModalCadastroBolsistaComponent } from './components/modals/Bolsista/mod
     HeaderComponent,
     ListaBolsistaComponent,
     ModalCadastroBolsistaComponent,
+    ModalVisualizacaoBolsistaComponent,
     ApenasLetrasDirective,
     ApenasNumerosDirective
   ],
@@ -47,7 +49,7 @@ import { ModalCadastroBolsistaComponent } from './components/modals/Bolsista/mod
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right'
-    })
+    }),
   ],
   providers: [DialogService, ToastrService],
   bootstrap: [AppComponent]
