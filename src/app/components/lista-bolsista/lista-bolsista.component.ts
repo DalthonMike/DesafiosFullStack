@@ -28,7 +28,7 @@ export class ListaBolsistaComponent implements OnInit {
   adicionarBolsista() {
     this.dialogService.open(ModalCadastroBolsistaComponent, {
       header: 'Inserir Bolsista',
-      width: '38%',
+      width: 'auto',
       height: 'auto',
       modal: true,
       baseZIndex: 10000,
