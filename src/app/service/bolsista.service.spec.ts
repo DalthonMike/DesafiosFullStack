@@ -1,12 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 
 import { BolsistaService } from './bolsista.service';
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 describe('BolsistaService', () => {
   let service: BolsistaService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [BolsistaService],
+      imports: [HttpClientTestingModule],
+    });
+
     service = TestBed.inject(BolsistaService);
   });
 

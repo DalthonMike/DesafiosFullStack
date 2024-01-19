@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListaBolsistaComponent } from './lista-bolsista.component';
+import { DialogService } from "primeng/dynamicdialog";
+import { BolsistaService } from "../../service/bolsista.service";
+import { HttpClientModule } from "@angular/common/http";
 
 describe('ListaBolsistaComponent', () => {
   let component: ListaBolsistaComponent;
@@ -8,7 +11,11 @@ describe('ListaBolsistaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListaBolsistaComponent ]
+      declarations: [ ListaBolsistaComponent ],
+      providers: [DialogService, BolsistaService],
+      imports: [
+        HttpClientModule,
+      ]
     })
     .compileComponents();
   });

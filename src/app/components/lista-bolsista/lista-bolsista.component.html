@@ -3,12 +3,12 @@
         <div class="col-12 mb-3 mb-lg-5">
             <div class="row">
                 <div class="col" style="margin-bottom: 10px">
-                    <button type="button" class="btn btn-primary" (click)="controleModal(true)" style="float: right">
+                    <button type="button" class="btn btn-primary" (click)="adicionarBolsista()" style="float: right">
                         Adicionar bolsista
                     </button>
                 </div>
             </div>
-            <p-table class="card" [value]="pessoa" styleClass="p-datatable-sm" responsiveLayout="scroll">
+            <p-table class="card" [value]="bolsista" styleClass="p-datatable-sm" responsiveLayout="scroll">
                 <ng-template pTemplate="caption">
                     <div class="row flex align-items-center justify-content-between">
                         <div class="col-2">
@@ -34,30 +34,30 @@
                         <th style="font-weight: bold; text-align: center">AÇÕES</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-pessoa>
+                <ng-template pTemplate="body" let-bolsista>
                     <tr>
-                        <td>{{ pessoa.nome }}</td>
-                        <td>{{ pessoa.tipoIdentificador }}</td>
-                        <td>{{ pessoa.numeroIdentificador }}</td>
-                        <td>{{ pessoa.dadosBancarios }}</td>
-                        <td>{{ pessoa.dataCadastro }}</td>
+                        <td>{{ bolsista.nome }}</td>
+                        <td>{{ bolsista.tipoIdentificador }}</td>
+                        <td>{{ bolsista.numeroIdentificador }}</td>
+                        <td>{{ bolsista.banco + " - " + bolsista.agencia + "/" + bolsista.conta }}</td>
+                        <td>{{ bolsista.dataCadastro }}</td>
                         <td>
                             <ul style="justify-content: center" class="list-unstyled mb-0 d-flex">
                                 <button style="margin-right: 10px"
                                         pButton type="button"
                                         pTooltip="Visualizar"
-                                        icon="pi pi-eye" (click)="editar(pessoa)"
+                                        icon="pi pi-eye" (click)="editar(bolsista)"
                                         class="botoes-table p-button-rounded p-button-help p-button-outlined"></button>
 
                                 <button style="margin-right: 10px"
                                         pButton type="button"
                                         pTooltip="Editar"
-                                        icon="pi pi-pencil" (click)="editar(pessoa)"
+                                        icon="pi pi-pencil" (click)="editar(bolsista)"
                                         class="botoes-table p-button-rounded p-button-info p-button-outlined"></button>
                                 <button
                                         pButton type="button"
                                         pTooltip="Deletar"
-                                        icon="pi pi-trash" (click)="editar(pessoa)"
+                                        icon="pi pi-trash" (click)="editar(bolsista)"
                                         class="botoes-table p-button-outlined p-button-rounded p-button-danger"></button>
                             </ul>
                         </td>
@@ -65,57 +65,5 @@
                 </ng-template>
             </p-table>
         </div>
-    </div>
-    <div>
-        <p-dialog header="Inserir bolsista" [(visible)]="displayModal" [modal]="true"
-                  [style]="{width: '35vw', height: '35vw'}"
-                  [draggable]="false" [resizable]="false">
-            <div class="row">
-                <div class="col-2">
-                    <h6>Nome:</h6>
-                </div>
-                <div class="col-12">
-                    <input type="text" class="form-control" required pInputText/>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 10px">
-                <div class="col-5">
-                    <h6>Tipo de identificador:</h6>
-                </div>
-                <div class="col-12">
-                    <p-dropdown placeholder="Selecione" [style]="{ 'width': '100%' }"></p-dropdown>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 10px">
-                <div class="col-5">
-                    <h6>Banco:</h6>
-                </div>
-                <div class="col-12">
-                        <p-dropdown placeholder="Selecione" [style]="{ 'width': '100%' }"></p-dropdown>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 10px">
-                <div class="col-2">
-                    <h6>Agência:</h6>
-                </div>
-                <div class="col-12">
-                    <input type="text" class="form-control" pInputText/>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 10px">
-                <div class="col-2">
-                    <h6>Conta:</h6>
-                </div>
-                <div class="col-12">
-                    <input type="text" class="form-control" pInputText/>
-                </div>
-            </div>
-            <ng-template pTemplate="footer">
-                <button pButton pRipple label="Cancelar" (click)="controleModal(false)" class="p-button-secondary"
-                        icon="pi pi-times"></button>
-                <button pButton pRipple label="Salvar" (click)="salvar()"
-                        icon="pi pi-check"></button>
-            </ng-template>
-        </p-dialog>
     </div>
 </div>
