@@ -66,8 +66,10 @@ export class ListaBolsistaComponent implements OnInit {
     });
   }
 
-  deletar(bolsista: any) {
-    
+  deletar(id: number) {
+    this.bolsistaService.deletar(id).subscribe(response => {
+
+    });
   }
 }
 

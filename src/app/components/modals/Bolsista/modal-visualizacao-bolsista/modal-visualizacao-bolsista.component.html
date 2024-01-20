@@ -76,12 +76,28 @@
             </div>
         </div>
     </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-5">
+            <h6>Data de cadastro:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <input type="text"
+                       id="conta"
+                       name="conta"
+                       class="form-control"
+                       ngModel="{{ dadosBolsista?.dataCadastro }}"
+                       pInputText disabled appApenasLetrasDirective/>
+            </div>
+        </div>
+    </div>
     <div class="row" style="padding-top: 10px">
         <div class="col">
             <button pButton pRipple
                     label="Sair"
                     style="float: right"
                     (click)="sair()"
+                    class="p-button-secondary"
                     icon="pi pi-times"></button>
         </div>
     </div>

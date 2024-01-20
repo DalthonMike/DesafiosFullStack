@@ -106,6 +106,21 @@
             </div>
         </div>
         <div class="row" style="margin-top: 10px">
+            <div class="col-5">
+                <h6>Data de cadastro:</h6>
+            </div>
+            <div class="col-12">
+                <div>
+                    <input type="text"
+                           id="dataCadastro"
+                           name="dataCadastro"
+                           class="form-control"
+                           ngModel="{{ resource?.dataCadastro }}"
+                           pInputText disabled appApenasLetrasDirective/>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
             <div class="col">
                 <button pButton pRipple
                         label="Cancelar"
