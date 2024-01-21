@@ -14,9 +14,9 @@ import { ToastrService } from "ngx-toastr";
 })
 export class ModalCadastroBolsistaComponent implements OnInit {
 
-    bancos: any[] = [];
+    bancos: String[] = [];
 
-    identificadores: any[] = [];
+    identificadores: String[] = [];
 
     public resource = new BolsistaModel();
 
@@ -31,7 +31,7 @@ export class ModalCadastroBolsistaComponent implements OnInit {
 
     ngOnInit(): void {
         this.listarTodosTiposIdentificadores();
-        this.bancos = ["Banco do Brasil", "Banco Itau", "Santander"]
+        this.listarTodosBancos();
     }
 
     onSubmit(bolsistaForm: NgForm) {
@@ -48,6 +48,8 @@ export class ModalCadastroBolsistaComponent implements OnInit {
     }
 
     salvar(bolsistaForm: NgForm) {
+
+        console.log(bolsistaForm);
 
         this.dialogRef.close({ salvamentoConfirmado: true });
         this.toastr.success("Cadastro realizado com sucesso!", "success", {
@@ -67,6 +69,13 @@ export class ModalCadastroBolsistaComponent implements OnInit {
     listarTodosTiposIdentificadores(): void {
         this.bolsistaService.listarTodosTiposIdentificadores().subscribe(response => {
             this.identificadores = response;
+            console.log(this.identificadores)
+        })
+    }
+
+    listarTodosBancos(): void {
+        this.bolsistaService.listarTodosBancos().subscribe(response => {
+            this.bancos = response;
             console.log(this.identificadores)
         })
     }
