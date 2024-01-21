@@ -9,14 +9,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class PagamentoResponseConverter extends AbstractResponseMapper<Pagamento, PagamentoResponse> {
 
-    @Autowired
-    private BolsistaResponseConverter bolsistaResponseConverter;
-
     @Override
     public PagamentoResponse toResponse(Pagamento response) {
         return PagamentoResponse.builder()
                 .id(response.getId())
-                .bolsista(bolsistaResponseConverter.toResponse(response.getBolsista()))
+                .idBolsista(response.getBolsista().getId())
                 .status(response.getStatus())
                 .dataPagamento(response.getDataPagamento())
                 .build();

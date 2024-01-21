@@ -35,7 +35,7 @@ public class BolsistaService {
 
     }
 
-    public boolean verificaIdentificadorENumeroJaCadastrado(IdentificadorEnum identificador, String numeroIdentificador) {
+    public boolean verificaIdentificadorENumeroJaCadastrado(IdentificadorEnum identificador, Long numeroIdentificador) {
         Bolsista byCpf = bolsistaRepository.findByIdentificadorAndNumeroIdentificador(identificador, numeroIdentificador);
         return Objects.nonNull(byCpf) ? true : false;
     }

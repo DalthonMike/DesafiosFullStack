@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Component
 public class BolsistaRequestConverter extends AbstractEntityMapper<BolsistaRequest, Bolsista> {
@@ -15,7 +17,7 @@ public class BolsistaRequestConverter extends AbstractEntityMapper<BolsistaReque
         return Bolsista.builder()
                 .id(request.getId())
                 .nome(request.getNome())
-                .dataCadastro(request.getDataCadastro())
+                .dataCadastro(LocalDate.now())
                 .codigoBanco(request.getCodigoBanco())
                 .numeroAgencia(request.getNumeroAgencia())
                 .numeroConta(request.getNumeroConta())

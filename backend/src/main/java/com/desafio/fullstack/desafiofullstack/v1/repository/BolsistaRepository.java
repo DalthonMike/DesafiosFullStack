@@ -13,6 +13,6 @@ public interface BolsistaRepository extends JpaRepository<Bolsista, Long> {
 
     Optional<Bolsista> findById(Long id);
 
-    Bolsista findByIdentificadorAndNumeroIdentificador(IdentificadorEnum identificadorEnum, String numeroIdentificador);
+    Bolsista findByIdentificadorAndNumeroIdentificador(IdentificadorEnum identificadorEnum, Long numeroIdentificador);
 
 }

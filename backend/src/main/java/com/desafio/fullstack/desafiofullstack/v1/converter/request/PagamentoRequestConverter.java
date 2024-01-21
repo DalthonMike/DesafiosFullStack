@@ -7,6 +7,8 @@ import com.desafio.fullstack.desafiofullstack.v1.service.BolsistaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 @Component
 public class PagamentoRequestConverter extends AbstractEntityMapper<PagamentoRequest, Pagamento> {
 

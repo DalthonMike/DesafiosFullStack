@@ -6,6 +6,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 public class PagamentoRequest {
@@ -16,7 +17,7 @@ public class PagamentoRequest {
     private Long idBolsista;
 
     @NotNull
-    private Date dataPagamento;
+    private LocalDate dataPagamento;
 
     @NotNull
     private BigDecimal valor;

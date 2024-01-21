@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -17,9 +18,9 @@ public class PagamentoResponse {
 
     private Long id;
 
-    private BolsistaResponse bolsista;
+    private Long idBolsista;
 
-    private Date dataPagamento;
+    private LocalDate dataPagamento;
 
     private StatusPagamentoEnum status;
 }

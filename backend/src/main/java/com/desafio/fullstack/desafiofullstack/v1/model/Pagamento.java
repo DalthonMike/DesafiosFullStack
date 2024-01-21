@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -21,7 +22,7 @@ public class Pagamento {
     private Long id;
 
     @Column(nullable = false)
-    private Date dataPagamento;
+    private LocalDate dataPagamento;
 
     @Column(nullable = false)
     private BigDecimal valor;

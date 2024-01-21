@@ -4,7 +4,7 @@ import com.desafio.fullstack.desafiofullstack.v1.Enums.IdentificadorEnum;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -25,7 +25,7 @@ public class Bolsista {
     private String nome;
 
     @Column(nullable = false)
-    private Date dataCadastro;
+    private LocalDate dataCadastro;
 
     @Column(nullable = false)
     private Long codigoBanco;
@@ -40,7 +40,7 @@ public class Bolsista {
     private IdentificadorEnum identificador;
 
     @Column(nullable = false)
-    private String numeroIdentificador;
+    private Long numeroIdentificador;
 
     @OneToMany(mappedBy = "bolsista")
     private List<Pagamento> pagamentos;

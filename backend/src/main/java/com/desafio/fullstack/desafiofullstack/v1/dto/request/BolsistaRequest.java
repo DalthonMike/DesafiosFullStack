@@ -23,9 +23,6 @@ public class BolsistaRequest {
     private String cnh;
 
     @NotNull
-    private Date dataCadastro;
-
-    @NotNull
     private long codigoBanco;
 
     @NotNull
@@ -38,6 +35,6 @@ public class BolsistaRequest {
     private IdentificadorEnum statusAgendamentoTreinamento;
 
     @NotNull
-    private String numeroIdentificador;
+    private Long numeroIdentificador;
 
 }

@@ -3,6 +3,7 @@ package com.desafio.fullstack.desafiofullstack.v1.converter.response;
 import com.desafio.fullstack.desafiofullstack.modelmapper.AbstractResponseMapper;
 import com.desafio.fullstack.desafiofullstack.v1.dto.response.BolsistaResponse;
 import com.desafio.fullstack.desafiofullstack.v1.model.Bolsista;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,6 +11,9 @@ import java.util.Objects;
 
 @Component
 public class BolsistaResponseConverter extends AbstractResponseMapper<Bolsista, BolsistaResponse> {
+
+    @Autowired
+    private PagamentoResponseConverter pagamentoResponseConverter;
 
     @Override
     public BolsistaResponse toResponse(Bolsista response) {
@@ -22,7 +26,7 @@ public class BolsistaResponseConverter extends AbstractResponseMapper<Bolsista, 
                 .numeroConta(response.getNumeroConta())
                 .identificadorEnum(response.getIdentificador())
                 .numeroIdentificador(response.getNumeroIdentificador())
-                .pagamentos(Objects.nonNull(response.getPagamentos()) ? response.getPagamentos() : new ArrayList<>())
+                .pagamentos(Objects.nonNull(response.getPagamentos()) ? pagamentoResponseConverter.toResponse(response.getPagamentos()) : new ArrayList<>())
                 .build();
     }
 }

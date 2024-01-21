@@ -1,13 +1,12 @@
 package com.desafio.fullstack.desafiofullstack.v1.dto.response;
 
 import com.desafio.fullstack.desafiofullstack.v1.Enums.IdentificadorEnum;
-import com.desafio.fullstack.desafiofullstack.v1.model.Pagamento;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -20,7 +19,7 @@ public class BolsistaResponse {
 
     private String nome;
 
-    private Date dataCadastro;
+    private LocalDate dataCadastro;
 
     private Long codigoBanco;
 
@@ -30,8 +29,8 @@ public class BolsistaResponse {
 
     private IdentificadorEnum identificadorEnum;
 
-    private String numeroIdentificador;
+    private Long numeroIdentificador;
 
-    private List<Pagamento> pagamentos;
+    private List<PagamentoResponse> pagamentos;
 
 }
