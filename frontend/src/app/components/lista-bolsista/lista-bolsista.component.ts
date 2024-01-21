@@ -15,6 +15,7 @@ import { ModalEdicaoBolsistaComponent } from "../modals/Bolsista/modal-edicao-bo
 export class ListaBolsistaComponent implements OnInit {
 
   bolsista: any;
+  bolsistas: any[] = []
 
   constructor(
       private dialogService: DialogService,
@@ -23,7 +24,14 @@ export class ListaBolsistaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.bolsista = pessoas;
+    this.listarTodos();
+  }
+
+  listarTodos(): void {
+    this.bolsistaService.listarTodos().subscribe(response => {
+      this.bolsistas = response
+      console.log(this.bolsistas);
+    })
   }
 
   adicionarBolsista() {
@@ -72,33 +80,3 @@ export class ListaBolsistaComponent implements OnInit {
     });
   }
 }
-
-let pessoas: BolsistaModel[] = [
-  {
-    nome: "Bruno Mikael Rodrigues Pereira",
-    tipoIdentificador: "CPF",
-    numeroIdentificador: "61 981812342",
-    banco: "Banco do Brasil",
-    agencia: "1234",
-    conta: "1234-5",
-    dataCadastro: "11/01/2024"
-  },
-  {
-    nome: "Dalthon Mike Rodrigues Dias",
-    tipoIdentificador: "CPF",
-    numeroIdentificador: "61 40028922",
-    banco: "Banco do Brasil",
-    agencia: "1234",
-    conta: "1234-5",
-    dataCadastro: "03/01/2024"
-  },
-  {
-    nome: "Vinicius Henrique Araujo Torres",
-    tipoIdentificador: "CPF",
-    numeroIdentificador: "61 993331635",
-    banco: "Banco do Brasil",
-    agencia: "1234",
-    conta: "1234-5",
-    dataCadastro: "07/01/2024"
-  },
-];

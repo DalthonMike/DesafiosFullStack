@@ -19,14 +19,16 @@ export class BolsistaService {
         return '';
     }
 
-    listar() {
-        return this.http.post<any>(`${this.pathBase}/bolsista`, {
-            observe: 'response',
-        });
+    listarTodos() {
+        return this.http.get<any[]>(`${this.pathBase}/bolsista/todos`);
+    }
+
+    listarTodosTiposIdentificadores() {
+        return this.http.get<any[]>(`${this.pathBase}/identificador/todos`);
     }
 
     cadastro(formData: BolsistaModel) {
-        return this.http.post<any>(`${this.pathBase}/bolsista`, formData, {
+        return this.http.post<any>(`${this.pathBase}/bolsista/cadastrar`, formData, {
             observe: 'response',
         });
     }

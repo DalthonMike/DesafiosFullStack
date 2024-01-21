@@ -8,7 +8,7 @@
                     </button>
                 </div>
             </div>
-            <p-table class="card" [value]="bolsista" styleClass="p-datatable-sm" responsiveLayout="scroll">
+            <p-table class="card" [value]="bolsistas" styleClass="p-datatable-sm" responsiveLayout="scroll">
                 <ng-template pTemplate="caption">
                     <div class="row flex align-items-center justify-content-between">
                         <div class="col-6">
@@ -37,10 +37,10 @@
                 <ng-template pTemplate="body" let-bolsista>
                     <tr>
                         <td>{{ bolsista.nome }}</td>
-                        <td>{{ bolsista.tipoIdentificador }}</td>
+                        <td>{{ bolsista.identificadorEnum }}</td>
                         <td>{{ bolsista.numeroIdentificador }}</td>
-                        <td>{{ bolsista.banco + " - " + bolsista.agencia + "/" + bolsista.conta }}</td>
-                        <td>{{ bolsista.dataCadastro }}</td>
+                        <td>{{ 'teste' }}</td>
+                        <td>{{ bolsista.dataCadastro | date:'dd/MM/yyyy'}}</td>
                         <td>
                             <ul style="justify-content: center" class="list-unstyled mb-0 d-flex">
                                 <button style="margin-right: 10px"

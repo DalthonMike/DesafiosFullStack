@@ -16,6 +16,8 @@ export class ModalCadastroBolsistaComponent implements OnInit {
 
     bancos: any[] = [];
 
+    identificadores: any[] = [];
+
     public resource = new BolsistaModel();
 
     constructor(
@@ -28,6 +30,7 @@ export class ModalCadastroBolsistaComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.listarTodosTiposIdentificadores();
         this.bancos = ["Banco do Brasil", "Banco Itau", "Santander"]
     }
 
@@ -59,6 +62,13 @@ export class ModalCadastroBolsistaComponent implements OnInit {
         //
         //     }
         // });
+    }
+
+    listarTodosTiposIdentificadores(): void {
+        this.bolsistaService.listarTodosTiposIdentificadores().subscribe(response => {
+            this.identificadores = response;
+            console.log(this.identificadores)
+        })
     }
 
     cancelar() {

@@ -8,6 +8,6 @@ export class BolsistaModel {
     banco: string;
     agencia: string;
     conta: string;
-    dataCadastro: string;
+    dataCadastro: Date;
 }
 
