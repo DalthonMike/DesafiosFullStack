@@ -3,7 +3,6 @@ import { DialogService } from "primeng/dynamicdialog";
 import { BolsistaService } from "../../service/bolsista.service";
 
 import { ModalCadastroBolsistaComponent } from "../modals/Bolsista/modal-cadastro-bolsista/modal-cadastro-bolsista.component";
-import { BolsistaModel } from "../../model/bolsista.model";
 import { ModalVisualizacaoBolsistaComponent } from "../modals/Bolsista/modal-visualizacao-bolsista/modal-visualizacao-bolsista.component";
 import { ModalEdicaoBolsistaComponent } from "../modals/Bolsista/modal-edicao-bolsista/modal-edicao-bolsista.component";
 
@@ -34,7 +33,7 @@ export class ListaBolsistaComponent implements OnInit {
     })
   }
 
-  adicionarBolsista() {
+  openModalCadastroBolsista() {
     this.dialogService.open(ModalCadastroBolsistaComponent, {
       header: 'Inserir Bolsista',
       width: 'auto',
@@ -43,6 +42,8 @@ export class ListaBolsistaComponent implements OnInit {
       baseZIndex: 10000,
       closeOnEscape: false,
       closable: false,
+    }).onClose.subscribe(() => {
+      this.listarTodos();
     });
   }
 

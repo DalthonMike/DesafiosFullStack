@@ -5,6 +5,7 @@ import { BolsistaModel } from "../../../../model/bolsista.model";
 import { DialogService, DynamicDialogRef } from "primeng/dynamicdialog";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import {ListaBolsistaComponent} from "../../../lista-bolsista/lista-bolsista.component";
 
 @Component({
     selector: 'app-modal-cadastro-bolsista',
@@ -32,6 +33,7 @@ export class ModalCadastroBolsistaComponent implements OnInit {
     ngOnInit(): void {
         this.listarTodosTiposIdentificadores();
         this.listarTodosBancos();
+        this.resource.identificador = "CPF"
     }
 
     onSubmit(bolsistaForm: NgForm) {
@@ -40,10 +42,11 @@ export class ModalCadastroBolsistaComponent implements OnInit {
             this.salvar(bolsistaForm);
         } else {
             bolsistaForm.form["controls"]["nome"].markAsDirty();
-            bolsistaForm.form["controls"]["tipoIdentificador"].markAsDirty();
+            bolsistaForm.form["controls"]["identificador"].markAsDirty();
+            bolsistaForm.form["controls"]["numeroIdentificador"].markAsDirty();
             bolsistaForm.form["controls"]["banco"].markAsDirty();
-            bolsistaForm.form["controls"]["agencia"].markAsDirty();
-            bolsistaForm.form["controls"]["conta"].markAsDirty();
+            bolsistaForm.form["controls"]["numeroAgencia"].markAsDirty();
+            bolsistaForm.form["controls"]["numeroConta"].markAsDirty();
         }
     }
 
@@ -57,7 +60,6 @@ export class ModalCadastroBolsistaComponent implements OnInit {
                     timeOut: 3000,
                     progressBar: true
                 });
-                this.bolsistaService.listarTodos();
             }
         });
     }
