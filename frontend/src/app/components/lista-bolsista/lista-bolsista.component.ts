@@ -80,4 +80,9 @@ export class ListaBolsistaComponent implements OnInit {
 
     });
   }
+
+  verificaSeExistePagamentoPagoOuSolicitado(bolsista: any): boolean {
+    return bolsista.pagamentos.some((b: { status: string; }) => b.status === 'SOLICITADO' || b.status === 'PAGO');
+  }
+
 }

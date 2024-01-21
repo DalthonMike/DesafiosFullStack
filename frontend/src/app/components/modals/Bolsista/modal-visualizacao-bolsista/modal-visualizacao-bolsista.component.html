@@ -21,10 +21,10 @@
         <div class="col-12">
             <div>
                 <input type="text"
-                       id="tipoIdentificador"
-                       name="tipoIdentificador"
+                       id="identificador"
+                       name="identificador"
                        class="form-control"
-                       ngModel="{{ dadosBolsista?.tipoIdentificador }}"
+                       ngModel="{{ dadosBolsista?.identificador }}"
                        pInputText disabled appApenasLetrasDirective/>
             </div>
         </div>
@@ -67,10 +67,10 @@
             <div>
                 <div>
                     <input type="text"
-                           id="agencia"
-                           name="tipoIdentificador"
+                           id="numeroAgencia"
+                           name="numeroAgencia"
                            class="form-control"
-                           ngModel="{{ dadosBolsista?.agencia }}"
+                           ngModel="{{ dadosBolsista?.numeroAgencia }}"
                            pInputText disabled appApenasLetrasDirective/>
                 </div>
             </div>
@@ -83,10 +83,10 @@
         <div class="col-12">
             <div>
                 <input type="text"
-                       id="conta"
-                       name="conta"
+                       id="numeroConta"
+                       name="numeroConta"
                        class="form-control"
-                       ngModel="{{ dadosBolsista?.conta }}"
+                       ngModel="{{ dadosBolsista?.numeroConta }}"
                        pInputText disabled appApenasLetrasDirective/>
             </div>
         </div>
@@ -101,7 +101,7 @@
                        id="conta"
                        name="conta"
                        class="form-control"
-                       ngModel="{{ dadosBolsista?.dataCadastro }}"
+                       ngModel="{{ dadosBolsista?.dataCadastro | date:'dd/MM/yyyy' }}"
                        pInputText disabled appApenasLetrasDirective/>
             </div>
         </div>
