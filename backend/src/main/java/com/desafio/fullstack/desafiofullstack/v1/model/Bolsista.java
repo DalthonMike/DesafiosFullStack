@@ -37,6 +37,7 @@ public class Bolsista {
     @Enumerated(EnumType.STRING)
     private IdentificadorEnum identificador;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private BancoEnum banco;
 

@@ -28,6 +28,7 @@ public class Pagamento {
     private BigDecimal valor;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private StatusPagamentoEnum status;
 
     @ManyToOne
