@@ -49,21 +49,17 @@ export class ModalCadastroBolsistaComponent implements OnInit {
 
     salvar(bolsistaForm: NgForm) {
 
-        console.log(bolsistaForm);
+        this.bolsistaService.cadastro(bolsistaForm.value).subscribe(response => {
 
-        this.dialogRef.close({ salvamentoConfirmado: true });
-        this.toastr.success("Cadastro realizado com sucesso!", "success", {
-            timeOut: 3000,
-            progressBar: true
+            if (response.status == 200) {
+                this.dialogRef.close({ salvamentoConfirmado: true });
+                this.toastr.success("Cadastro realizado com sucesso!", "success", {
+                    timeOut: 3000,
+                    progressBar: true
+                });
+                this.bolsistaService.listarTodos();
+            }
         });
-
-        //TODO lembrar de voltar aqui para descomentar requisição para o backend.\\
-        // this.bolsistaService.cadastro(bolsistaForm).subscribe(response => {
-        //
-        //     if (response.status == 200) {
-        //
-        //     }
-        // });
     }
 
     listarTodosTiposIdentificadores(): void {
