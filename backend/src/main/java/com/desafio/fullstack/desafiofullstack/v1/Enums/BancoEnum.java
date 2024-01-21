@@ -2,16 +2,16 @@ package com.desafio.fullstack.desafiofullstack.v1.Enums;
 
 public enum BancoEnum {
 
-    BANCO_DO_BRASIL("001", "Banco do Brasil S.A."),
-    CAIXA_ECONOMICA("104", "Caixa Econômica Federal"),
-    BRADESCO("237", "Banco Bradesco S.A."),
-    ITAU_UNIBANCO("341", "Banco Itaú Unibanco S.A."),
-    SANTANDER("033", "Banco Santander (Brasil) S.A."),
-    BTG_PACTUAL("208", "Banco BTG Pactual S.A."),
-    VOTORANTIM("655", "Banco Votorantim S.A."),
-    SAFRA("422", "Banco Safra S.A."),
-    BANCO_DO_NORDESTE("004", "Banco do Nordeste do Brasil S.A."),
-    BANCO_DA_AMAZONIA("003", "Banco da Amazônia S.A.");
+    BANCO_DO_BRASIL("BANCO_DO_BRASIL", "Banco do Brasil S.A."),
+    CAIXA_ECONOMICA("CAIXA_ECONOMICA", "Caixa Econômica Federal"),
+    BRADESCO("BRADESCO", "Banco Bradesco S.A."),
+    ITAU_UNIBANCO("ITAU_UNIBANCO", "Banco Itaú Unibanco S.A."),
+    SANTANDER("SANTANDER", "Banco Santander (Brasil) S.A."),
+    BTG_PACTUAL("BTG_PACTUAL", "Banco BTG Pactual S.A."),
+    VOTORANTIM("VOTORANTIM", "Banco Votorantim S.A."),
+    SAFRA("SAFRA", "Banco Safra S.A."),
+    BANCO_DO_NORDESTE("BANCO_DO_NORDESTE", "Banco do Nordeste do Brasil S.A."),
+    BANCO_DA_AMAZONIA("BANCO_DA_AMAZONIA", "Banco da Amazônia S.A.");
 
     private String codigo;
     private String descricao;
