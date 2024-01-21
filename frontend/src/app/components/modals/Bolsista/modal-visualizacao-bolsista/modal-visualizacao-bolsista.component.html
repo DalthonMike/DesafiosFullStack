@@ -31,6 +31,21 @@
     </div>
     <div class="row" style="margin-top: 10px">
         <div class="col-5">
+            <h6>Tipo de identificador:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <input type="text"
+                       id="numeroIdentificador"
+                       name="numeroIdentificador"
+                       class="form-control"
+                       ngModel="{{ dadosBolsista?.numeroIdentificador }}"
+                       pInputText disabled appApenasLetrasDirective/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-5">
             <h6>Banco:</h6>
         </div>
         <div class="col-12">

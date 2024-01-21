@@ -11,7 +11,8 @@ export class ApenasLetrasDirective {
         const input = this.el.nativeElement as HTMLInputElement;
         const valorAtual = input.value;
 
-        const valorSemNumeros = valorAtual.replace(/[^a-zA-Z]/g, '');
+        // Substitua [^a-zA-Z ] para permitir letras e espaços
+        const valorSemNumeros = valorAtual.replace(/[^a-zA-Z ]/g, '');
 
         if (valorAtual !== valorSemNumeros) {
             input.value = valorSemNumeros;
