@@ -5,7 +5,7 @@ import { BolsistaService } from "../../service/bolsista.service";
 import { ModalCadastroBolsistaComponent } from "../modals/Bolsista/modal-cadastro-bolsista/modal-cadastro-bolsista.component";
 import { ModalVisualizacaoBolsistaComponent } from "../modals/Bolsista/modal-visualizacao-bolsista/modal-visualizacao-bolsista.component";
 import { ModalEdicaoBolsistaComponent } from "../modals/Bolsista/modal-edicao-bolsista/modal-edicao-bolsista.component";
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-lista-bolsista',
@@ -35,7 +35,7 @@ export class ListaBolsistaComponent implements OnInit {
     })
   }
 
-  adicionarBolsista() {
+  openModalCadastroBolsista() {
     this.dialogService.open(ModalCadastroBolsistaComponent, {
       header: 'Inserir Bolsista',
       width: 'auto',
@@ -44,6 +44,8 @@ export class ListaBolsistaComponent implements OnInit {
       baseZIndex: 10000,
       closeOnEscape: false,
       closable: false,
+    }).onClose.subscribe(() => {
+      this.listarTodos();
     });
   }
 
@@ -80,6 +82,11 @@ export class ListaBolsistaComponent implements OnInit {
 
     });
   }
+
+  verificaSeExistePagamentoPagoOuSolicitado(bolsista: any): boolean {
+    return bolsista.pagamentos.some((b: { status: string; }) => b.status === 'SOLICITADO' || b.status === 'PAGO');
+  }
+
 
     gerenciarPagamentos(id: number): void {
         this.router.navigate(['/lista-pagamento/' + id]);

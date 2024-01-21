@@ -22,8 +22,6 @@ public class BolsistaResponse {
 
     private LocalDate dataCadastro;
 
-    private Long codigoBanco;
-
     private Long numeroAgencia;
 
     private Long numeroConta;

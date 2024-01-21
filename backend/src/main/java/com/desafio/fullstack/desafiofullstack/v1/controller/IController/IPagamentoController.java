@@ -22,4 +22,7 @@ public interface IPagamentoController {
     @PostMapping("/cadastrar")
     ResponseEntity<PagamentoResponse> cadastrar(@RequestBody PagamentoRequest request);
 
+    @PostMapping("/editar")
+    ResponseEntity editar(@RequestBody PagamentoRequest request);
+
 }

@@ -45,4 +45,10 @@ public class PagamentoController implements IPagamentoController {
         Pagamento pagamentoCadastrado = pagamentoService.cadastrar(request);
         return ResponseEntity.ok(pagamentoResponseConverter.toResponse(pagamentoCadastrado));
     }
+
+    @Override
+    public ResponseEntity editar(PagamentoRequest request) {
+        pagamentoService.editar(request);
+        return ResponseEntity.noContent().build();
+    }
 }

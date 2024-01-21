@@ -3,7 +3,7 @@
         <div class="col-12 mb-3 mb-lg-5">
             <div class="row">
                 <div class="col" style="margin-bottom: 10px">
-                    <button type="button" class="btn btn-primary" (click)="adicionarBolsista()" style="float: right">
+                    <button type="button" class="btn btn-primary" (click)="openModalCadastroBolsista()" style="float: right">
                         Adicionar bolsista
                     </button>
                 </div>
@@ -57,6 +57,10 @@
                                 <button
                                         pButton type="button"
                                         pTooltip="Deletar"
+                                        icon="pi pi-trash" (click)="deletar(bolsista)"
+                                        class="botoes-table p-button-outlined p-button-rounded p-button-danger"
+                                        *ngIf="!verificaSeExistePagamentoPagoOuSolicitado(bolsista)"
+                                ></button>
                                         icon="pi pi-trash" (click)="deletar(bolsista.id)"
                                         class="botoes-table p-button-outlined p-button-rounded p-button-danger"></button>
 
