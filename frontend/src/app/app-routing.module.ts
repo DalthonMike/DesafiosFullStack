@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {ListaBolsistaComponent} from "./components/lista-bolsista/lista-bolsista.component";
+import { ListaBolsistaComponent } from "./components/lista-bolsista/lista-bolsista.component";
+import { ListaPagamentoComponent } from "./components/lista-pagamento/lista-pagamento.component";
 
 const routes: Routes = [
-  { path: 'lista-bolsista', component: ListaBolsistaComponent }
+  { path: 'lista-bolsista', component: ListaBolsistaComponent },
+  { path: 'lista-pagamento/:id', component: ListaPagamentoComponent }
 ];
 
 @NgModule({

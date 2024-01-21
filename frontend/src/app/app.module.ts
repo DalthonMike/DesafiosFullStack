@@ -23,6 +23,8 @@ import { ListaBolsistaComponent } from './components/lista-bolsista/lista-bolsis
 import { ModalCadastroBolsistaComponent } from './components/modals/Bolsista/modal-cadastro-bolsista/modal-cadastro-bolsista.component';
 import { ModalVisualizacaoBolsistaComponent } from "./components/modals/Bolsista/modal-visualizacao-bolsista/modal-visualizacao-bolsista.component";
 import { ModalEdicaoBolsistaComponent } from "./components/modals/Bolsista/modal-edicao-bolsista/modal-edicao-bolsista.component";
+import { ListaPagamentoComponent } from "./components/lista-pagamento/lista-pagamento.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -32,8 +34,9 @@ import { ModalEdicaoBolsistaComponent } from "./components/modals/Bolsista/modal
     ModalCadastroBolsistaComponent,
     ModalVisualizacaoBolsistaComponent,
     ModalEdicaoBolsistaComponent,
+    ListaPagamentoComponent,
     ApenasLetrasDirective,
-    ApenasNumerosDirective
+    ApenasNumerosDirective,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -48,6 +51,7 @@ import { ModalEdicaoBolsistaComponent } from "./components/modals/Bolsista/modal
     FormsModule,
     HttpClientModule,
     InputTextModule,
+    RouterModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right'

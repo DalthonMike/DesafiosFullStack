@@ -5,14 +5,14 @@ import { BolsistaService } from "../../service/bolsista.service";
 import { ModalCadastroBolsistaComponent } from "../modals/Bolsista/modal-cadastro-bolsista/modal-cadastro-bolsista.component";
 import { ModalVisualizacaoBolsistaComponent } from "../modals/Bolsista/modal-visualizacao-bolsista/modal-visualizacao-bolsista.component";
 import { ModalEdicaoBolsistaComponent } from "../modals/Bolsista/modal-edicao-bolsista/modal-edicao-bolsista.component";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
-  selector: 'app-lista-bolsista',
-  templateUrl: './lista-bolsista.component.html',
-  styleUrls: ['./lista-bolsista.component.css'],
+  selector: 'app-lista-pagamento',
+  templateUrl: './lista-pagamento.component.html',
+  styleUrls: ['./lista-pagamento.component.css'],
 })
-export class ListaBolsistaComponent implements OnInit {
+export class ListaPagamentoComponent implements OnInit {
 
   bolsista: any;
   bolsistas: any[] = []
@@ -21,21 +21,26 @@ export class ListaBolsistaComponent implements OnInit {
       private dialogService: DialogService,
       private bolsistaService: BolsistaService,
       private router: Router,
+      private route: ActivatedRoute
   ) {
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const id = params['id'];
+      // Use o valor do 'id' conforme necessário
+    });
     this.listarTodos();
   }
 
   listarTodos(): void {
-    this.bolsistaService.listarTodos().subscribe(response => {
-      this.bolsistas = response
-      console.log(this.bolsistas);
-    })
+    // this.bolsistaService.listarTodos().subscribe(response => {
+    //   this.bolsistas = response
+    //   console.log(this.bolsistas);
+    // })
   }
 
-  openModalCadastroBolsista() {
+  adicionarBolsista() {
     this.dialogService.open(ModalCadastroBolsistaComponent, {
       header: 'Inserir Bolsista',
       width: 'auto',
@@ -44,8 +49,6 @@ export class ListaBolsistaComponent implements OnInit {
       baseZIndex: 10000,
       closeOnEscape: false,
       closable: false,
-    }).onClose.subscribe(() => {
-      this.listarTodos();
     });
   }
 
@@ -82,13 +85,4 @@ export class ListaBolsistaComponent implements OnInit {
 
     });
   }
-
-  verificaSeExistePagamentoPagoOuSolicitado(bolsista: any): boolean {
-    return bolsista.pagamentos.some((b: { status: string; }) => b.status === 'SOLICITADO' || b.status === 'PAGO');
-  }
-
-
-    gerenciarPagamentos(id: number): void {
-        this.router.navigate(['/lista-pagamento/' + id]);
-    }
 }

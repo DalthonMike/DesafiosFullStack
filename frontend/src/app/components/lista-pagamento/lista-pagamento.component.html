@@ -1,10 +1,10 @@
-<div class="table-lista" style="padding-left: 50px; padding-right: 50px">
+<div class="table-lista" style="padding-left: 300px; padding-right: 300px">
     <div class="row">
         <div class="col-12 mb-3 mb-lg-5">
             <div class="row">
                 <div class="col" style="margin-bottom: 10px">
-                    <button type="button" class="btn btn-primary" (click)="openModalCadastroBolsista()" style="float: right">
-                        Adicionar bolsista
+                    <button type="button" class="btn btn-primary" (click)="adicionarBolsista()" style="float: right">
+                        Adicionar de pagamentos
                     </button>
                 </div>
             </div>
@@ -12,7 +12,7 @@
                 <ng-template pTemplate="caption">
                     <div class="row flex align-items-center justify-content-between">
                         <div class="col-6">
-                            <h5 style="margin-bottom: 5px;">Lista de bolsistas</h5>
+                            <h5 style="margin-bottom: 5px;">Lista de pagamentos</h5>
                         </div>
                         <div class="col-6">
                             <button pButton pRipple
@@ -26,11 +26,9 @@
                 </ng-template>
                 <ng-template pTemplate="header">
                     <tr class="small">
-                        <th style="font-weight: bold">NOME</th>
-                        <th style="font-weight: bold">TIPO DE IDENTIFICADOR</th>
-                        <th style="font-weight: bold">NÚMERO DO INDENTIFICADOR</th>
+                        <th style="font-weight: bold">DATA DO PAGAMENTO</th>
                         <th style="font-weight: bold">DADOS BANCÁRIOS</th>
-                        <th style="font-weight: bold">DATA DO CADASTRO</th>
+                        <th style="font-weight: bold">STATUS</th>
                         <th style="font-weight: bold; text-align: center">AÇÕES</th>
                     </tr>
                 </ng-template>
@@ -52,20 +50,13 @@
                                 <button style="margin-right: 10px"
                                         pButton type="button"
                                         pTooltip="Editar"
-                                        icon="pi pi-pencil" (click)="editar(bolsista.id)"
+                                        icon="pi pi-pencil" (click)="editar(bolsista)"
                                         class="botoes-table p-button-rounded p-button-info p-button-outlined"></button>
                                 <button
                                         pButton type="button"
                                         pTooltip="Deletar"
                                         icon="pi pi-trash" (click)="deletar(bolsista)"
-                                        class="botoes-table p-button-outlined p-button-rounded p-button-danger"
-                                        *ngIf="!verificaSeExistePagamentoPagoOuSolicitado(bolsista)"
-                                ></button>
-                                <button style="margin-left: 10px"
-                                        pButton type="button"
-                                        pTooltip="pagamentos"
-                                        icon="pi pi-dollar" (click)="gerenciarPagamentos(bolsista.id)"
-                                        class="botoes-table p-button-outlined p-button-rounded p-button-success"></button>
+                                        class="botoes-table p-button-outlined p-button-rounded p-button-danger"></button>
                             </ul>
                         </td>
                     </tr>

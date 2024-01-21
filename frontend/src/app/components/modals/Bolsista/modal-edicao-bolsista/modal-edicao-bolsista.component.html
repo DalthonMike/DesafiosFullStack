@@ -55,8 +55,9 @@
                            name="numeroIdentificador"
                            #numeroIdentificador="ngModel"
                            class="form-control"
-                           [(ngModel)]="resource.numeroIdentificador"
-                           placeholder="Digite o seu nome completo"
+                           ngModel="{{ resource?.numeroIdentificador }}"
+                           [required]="!resource?.numeroIdentificador"
+                           placeholder="Digite número identificador"
                            [ngClass]="{'ng-invalid ng-dirty': numeroIdentificador.invalid && numeroIdentificador.touched}"
                            required pInputText appApenasNumerosDirective/>
                 </div>
