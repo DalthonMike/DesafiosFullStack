@@ -33,7 +33,7 @@ public class BolsistaRequest {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private IdentificadorEnum statusAgendamentoTreinamento;
+    private IdentificadorEnum identificador;
 
     @NotNull
     @Enumerated(EnumType.STRING)
