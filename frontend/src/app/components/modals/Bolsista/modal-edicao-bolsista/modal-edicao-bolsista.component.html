@@ -44,6 +44,28 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-2">
+                <h6>Número identificador:</h6>
+            </div>
+            <div class="col-12">
+                <div>
+                    <input type="text"
+                           id="numeroIdentificador"
+                           name="numeroIdentificador"
+                           #numeroIdentificador="ngModel"
+                           class="form-control"
+                           [(ngModel)]="resource.numeroIdentificador"
+                           placeholder="Digite o seu nome completo"
+                           [ngClass]="{'ng-invalid ng-dirty': numeroIdentificador.invalid && numeroIdentificador.touched}"
+                           required pInputText appApenasNumerosDirective/>
+                </div>
+                <div *ngIf="numeroIdentificador.invalid && (numeroIdentificador.dirty || numeroIdentificador.touched)"
+                     class="alert" style="padding: 0; margin: 0">
+                    <span class="alert-text">O campo é obrigatório!</span>
+                </div>
+            </div>
+        </div>
         <div class="row" style="margin-top: 10px">
             <div class="col-5">
                 <h6>Banco:</h6>

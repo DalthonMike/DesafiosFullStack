@@ -47,7 +47,7 @@ export class ModalCadastroBolsistaComponent implements OnInit {
         }
     }
 
-    salvar(bolsistaForm: any) {
+    salvar(bolsistaForm: NgForm) {
 
         this.dialogRef.close({ salvamentoConfirmado: true });
         this.toastr.success("Cadastro realizado com sucesso!", "success", {
