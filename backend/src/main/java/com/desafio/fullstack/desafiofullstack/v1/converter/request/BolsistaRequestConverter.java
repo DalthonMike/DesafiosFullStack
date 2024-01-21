@@ -5,10 +5,7 @@ import com.desafio.fullstack.desafiofullstack.v1.dto.request.BolsistaRequest;
 import com.desafio.fullstack.desafiofullstack.v1.model.Bolsista;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Component
 public class BolsistaRequestConverter extends AbstractEntityMapper<BolsistaRequest, Bolsista> {
@@ -22,6 +19,7 @@ public class BolsistaRequestConverter extends AbstractEntityMapper<BolsistaReque
                 .numeroAgencia(request.getNumeroAgencia())
                 .numeroConta(request.getNumeroConta())
                 .identificador(request.getStatusAgendamentoTreinamento())
+                .banco(request.getBanco())
                 .numeroIdentificador(request.getNumeroIdentificador())
                 .build();
     }

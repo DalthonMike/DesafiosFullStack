@@ -1,5 +1,6 @@
 package com.desafio.fullstack.desafiofullstack.v1.model;
 
+import com.desafio.fullstack.desafiofullstack.v1.Enums.BancoEnum;
 import com.desafio.fullstack.desafiofullstack.v1.Enums.IdentificadorEnum;
 import lombok.*;
 
@@ -38,6 +39,9 @@ public class Bolsista {
 
     @Enumerated(EnumType.STRING)
     private IdentificadorEnum identificador;
+
+    @Enumerated(EnumType.STRING)
+    private BancoEnum banco;
 
     @Column(nullable = false)
     private Long numeroIdentificador;

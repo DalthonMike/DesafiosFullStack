@@ -1,0 +1,12 @@
+enum BancoEnum {
+    BANCO_DO_BRASIL = "001",
+    CAIXA_ECONOMICA = "104",
+    BRADESCO = "237",
+    ITAU_UNIBANCO = "341",
+    SANTANDER = "033",
+    BTG_PACTUAL = "208",
+    VOTORANTIM = "655",
+    SAFRA = "422",
+    BANCO_DO_NORDESTE = "004",
+    BANCO_DA_AMAZONIA = "003",
+}

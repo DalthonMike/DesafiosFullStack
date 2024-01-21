@@ -1,12 +1,12 @@
 package com.desafio.fullstack.desafiofullstack.v1.dto.request;
 
+import com.desafio.fullstack.desafiofullstack.v1.Enums.BancoEnum;
 import com.desafio.fullstack.desafiofullstack.v1.Enums.IdentificadorEnum;
 import com.sun.istack.NotNull;
 import lombok.Data;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import java.sql.Date;
 
 @Data
 public class BolsistaRequest {
@@ -31,8 +31,13 @@ public class BolsistaRequest {
     @NotNull
     private long numeroConta;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private IdentificadorEnum statusAgendamentoTreinamento;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private BancoEnum banco;
 
     @NotNull
     private Long numeroIdentificador;
