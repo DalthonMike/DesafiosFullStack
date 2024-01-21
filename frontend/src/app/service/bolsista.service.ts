@@ -24,7 +24,7 @@ export class BolsistaService {
     }
 
     listarTodosTiposIdentificadores() {
-        return this.http.get<any[]>(`${this.pathBase}/identificador/todos`);
+        return this.http.get<any[]>(`${this.pathBase}/enums/identificadores`);
     }
 
     cadastro(formData: BolsistaModel) {
