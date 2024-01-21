@@ -24,7 +24,8 @@ public class BolsistaResponseConverter extends AbstractResponseMapper<Bolsista, 
                 .codigoBanco(response.getCodigoBanco())
                 .numeroAgencia(response.getNumeroAgencia())
                 .numeroConta(response.getNumeroConta())
-                .identificadorEnum(response.getIdentificador())
+                .identificador(response.getIdentificador())
+                .banco(response.getBanco())
                 .numeroIdentificador(response.getNumeroIdentificador())
                 .pagamentos(Objects.nonNull(response.getPagamentos()) ? pagamentoResponseConverter.toResponse(response.getPagamentos()) : new ArrayList<>())
                 .build();

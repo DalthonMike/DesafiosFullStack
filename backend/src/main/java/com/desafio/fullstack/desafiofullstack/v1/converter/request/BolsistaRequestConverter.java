@@ -18,7 +18,7 @@ public class BolsistaRequestConverter extends AbstractEntityMapper<BolsistaReque
                 .codigoBanco(request.getCodigoBanco())
                 .numeroAgencia(request.getNumeroAgencia())
                 .numeroConta(request.getNumeroConta())
-                .identificador(request.getStatusAgendamentoTreinamento())
+                .identificador(request.getIdentificador())
                 .banco(request.getBanco())
                 .numeroIdentificador(request.getNumeroIdentificador())
                 .build();

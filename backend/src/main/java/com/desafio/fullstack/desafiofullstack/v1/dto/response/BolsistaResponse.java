@@ -1,5 +1,6 @@
 package com.desafio.fullstack.desafiofullstack.v1.dto.response;
 
+import com.desafio.fullstack.desafiofullstack.v1.Enums.BancoEnum;
 import com.desafio.fullstack.desafiofullstack.v1.Enums.IdentificadorEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,7 +28,9 @@ public class BolsistaResponse {
 
     private Long numeroConta;
 
-    private IdentificadorEnum identificadorEnum;
+    private IdentificadorEnum identificador;
+
+    private BancoEnum banco;
 
     private Long numeroIdentificador;
 
