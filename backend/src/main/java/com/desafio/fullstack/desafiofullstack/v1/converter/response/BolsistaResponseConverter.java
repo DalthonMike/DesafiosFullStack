@@ -21,7 +21,6 @@ public class BolsistaResponseConverter extends AbstractResponseMapper<Bolsista, 
                 .id(response.getId())
                 .nome(response.getNome())
                 .dataCadastro(response.getDataCadastro())
-                .codigoBanco(response.getCodigoBanco())
                 .numeroAgencia(response.getNumeroAgencia())
                 .numeroConta(response.getNumeroConta())
                 .identificador(response.getIdentificador())

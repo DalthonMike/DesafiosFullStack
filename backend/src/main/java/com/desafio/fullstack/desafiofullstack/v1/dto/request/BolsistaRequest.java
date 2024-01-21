@@ -17,13 +17,10 @@ public class BolsistaRequest {
     private String nome;
 
     @NotNull
-    private long codigoBanco;
+    private Long numeroAgencia;
 
     @NotNull
-    private long numeroAgencia;
-
-    @NotNull
-    private long numeroConta;
+    private Long numeroConta;
 
     @NotNull
     @Enumerated(EnumType.STRING)

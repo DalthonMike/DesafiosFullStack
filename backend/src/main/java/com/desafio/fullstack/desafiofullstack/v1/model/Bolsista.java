@@ -29,9 +29,6 @@ public class Bolsista {
     private LocalDate dataCadastro;
 
     @Column(nullable = false)
-    private Long codigoBanco;
-
-    @Column(nullable = false)
     private Long numeroAgencia;
 
     @Column(nullable = false)
