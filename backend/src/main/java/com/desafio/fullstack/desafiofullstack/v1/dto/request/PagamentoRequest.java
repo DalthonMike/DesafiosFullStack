@@ -22,6 +22,5 @@ public class PagamentoRequest {
     @NotNull
     private BigDecimal valor;
 
-    @NotNull
     private StatusPagamentoEnum status;
 }
