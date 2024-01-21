@@ -37,9 +37,9 @@
                 <ng-template pTemplate="body" let-bolsista>
                     <tr>
                         <td>{{ bolsista.nome }}</td>
-                        <td>{{ bolsista.identificadorEnum }}</td>
+                        <td>{{ bolsista.identificador }}</td>
                         <td>{{ bolsista.numeroIdentificador }}</td>
-                        <td>{{ 'teste' }}</td>
+                        <td>{{ bolsista.banco }} - {{ bolsista.numeroAgencia }}/{{ bolsista.numeroConta }}</td>
                         <td>{{ bolsista.dataCadastro | date:'dd/MM/yyyy'}}</td>
                         <td>
                             <ul style="justify-content: center" class="list-unstyled mb-0 d-flex">

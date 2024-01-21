@@ -1,13 +1,13 @@
 export class BolsistaModel {
 
     constructor() {}
-
     nome: string;
-    tipoIdentificador: string;
-    numeroIdentificador: string;
+    codigoBanco: number;
+    numeroAgencia: number;
+    numeroConta: number;
+    identificador: string;
     banco: string;
-    agencia: string;
-    conta: string;
-    dataCadastro: Date;
+    numeroIdentificador: number;
+    dataCadastro: Date
 }
 

@@ -17,12 +17,6 @@ public class BolsistaRequest {
     private String nome;
 
     @NotNull
-    private String cpf;
-
-    @NotNull
-    private String cnh;
-
-    @NotNull
     private long codigoBanco;
 
     @NotNull
