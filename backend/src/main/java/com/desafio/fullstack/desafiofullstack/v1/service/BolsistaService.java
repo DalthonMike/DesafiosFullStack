@@ -33,13 +33,15 @@ public class BolsistaService {
 
     public Bolsista cadastrar(Bolsista bolsista) {
 
-        if (!verificaIdentificadorENumeroJaCadastrado(bolsista.getIdentificador(), bolsista.getNumeroIdentificador())) {
+        if (Objects.nonNull(bolsista.getId())) {
+            return bolsistaRepository.save(bolsista);
+        } else if (!verificaIdentificadorENumeroJaCadastrado(bolsista.getIdentificador(), bolsista.getNumeroIdentificador())) {
             return bolsistaRepository.save(bolsista);
         } else {
             throw new NegocioException("Já existe um bolsista com o " + bolsista.getIdentificador().getCodigo() + ": " + bolsista.getNumeroIdentificador() + " informado!");
         }
-
     }
+
 
     public boolean verificaIdentificadorENumeroJaCadastrado(IdentificadorEnum identificador, Long numeroIdentificador) {
         Bolsista byCpf = bolsistaRepository.findByIdentificadorAndNumeroIdentificador(identificador, numeroIdentificador);
