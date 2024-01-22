@@ -6,6 +6,7 @@ import { BolsistaService } from "../../service/bolsista.service";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterTestingModule } from "@angular/router/testing";
 import { ToastrModule } from "ngx-toastr";
+import {ConfirmationService} from "primeng/api";
 
 describe('ListaBolsistaComponent', () => {
   let component: ListaBolsistaComponent;
@@ -14,7 +15,7 @@ describe('ListaBolsistaComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ListaBolsistaComponent ],
-      providers: [DialogService, BolsistaService, ],
+      providers: [DialogService, BolsistaService, ConfirmationService],
       imports: [
         HttpClientModule,
         RouterTestingModule,
