@@ -1,6 +1,8 @@
 export class BolsistaModel {
 
     constructor() {}
+
+    id: number;
     nome: string;
     codigoBanco: number;
     numeroAgencia: number;

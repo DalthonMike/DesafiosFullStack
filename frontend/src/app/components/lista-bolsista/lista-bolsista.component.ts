@@ -52,7 +52,7 @@ export class ListaBolsistaComponent implements OnInit {
         });
     }
 
-    editar(id: any) {
+    editar(bolsista: any) {
         this.dialogService.open(ModalEdicaoBolsistaComponent, {
             header: 'Editar Bolsista',
             width: 'auto',
@@ -61,8 +61,9 @@ export class ListaBolsistaComponent implements OnInit {
             baseZIndex: 10000,
             closeOnEscape: true,
             closable: true,
-            //(data) irá enviar o id do bolsista para consulta da visualização;
-            data: id,
+            data: bolsista,
+        }).onClose.subscribe(() => {
+            this.listarTodos();
         });
     }
 
@@ -75,7 +76,6 @@ export class ListaBolsistaComponent implements OnInit {
             baseZIndex: 10000,
             closeOnEscape: true,
             closable: true,
-            //(data) irá enviar o id do bolsista para consulta da visualização;
             data: id,
         });
     }

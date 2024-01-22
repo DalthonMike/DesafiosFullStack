@@ -31,14 +31,14 @@
             </div>
             <div class="col-12">
                 <p-dropdown [options]="identificadores"
-                            id="tipoIdentificador"
-                            name="tipoIdentificador"
-                            #tipoIdentificador="ngModel"
+                            id="identificador"
+                            name="identificador"
+                            #identificador="ngModel"
                             ngModel="{{ resource?.identificador }}"
                             [required]="!resource?.identificador"
-                            [ngClass]="{'ng-invalid ng-dirty': tipoIdentificador.invalid && tipoIdentificador.touched}"
+                            [ngClass]="{'ng-invalid ng-dirty': identificador.invalid && identificador.touched}"
                             placeholder="Selecione" [style]="{ 'width': '100%' }"></p-dropdown>
-                <div *ngIf="tipoIdentificador.invalid && (tipoIdentificador.dirty || tipoIdentificador.touched)"
+                <div *ngIf="identificador.invalid && (identificador.dirty || identificador.touched)"
                      class="alert" style="padding: 0; margin: 0">
                     <span class="alert-text">O campo é obrigatório!</span>
                 </div>
@@ -93,16 +93,16 @@
             <div class="col-12">
                 <div>
                     <input type="text"
-                           id="agencia"
-                           name="agencia"
-                           #agencia="ngModel"
+                           id="numeroAgencia"
+                           name="numeroAgencia"
+                           #numeroAgencia="ngModel"
                            class="form-control"
                            ngModel="{{ resource?.numeroAgencia }}"
                            placeholder="Digite o número da agência"
-                           [ngClass]="{'ng-invalid ng-dirty': agencia.invalid && agencia.touched}"
+                           [ngClass]="{'ng-invalid ng-dirty': numeroAgencia.invalid && numeroAgencia.touched}"
                            required pInputText appApenasNumerosDirective/>
                 </div>
-                <div *ngIf="agencia.invalid && (agencia.dirty || agencia.touched)"
+                <div *ngIf="numeroAgencia.invalid && (numeroAgencia.dirty || numeroAgencia.touched)"
                      class="alert" style="padding: 0; margin: 0">
                     <span class="alert-text">O campo é obrigatório!</span>
                 </div>
@@ -114,15 +114,15 @@
             </div>
             <div class="col-12">
                 <input type="text"
-                       id="conta"
-                       name="conta"
-                       #conta="ngModel"
+                       id="numeroConta"
+                       name="numeroConta"
+                       #numeroConta="ngModel"
                        class="form-control"
                        ngModel="{{ resource?.numeroConta }}"
-                       placeholder="Digite o número da conta"
-                       [ngClass]="{'ng-invalid ng-dirty': conta.invalid && conta.touched}"
+                       placeholder="Digite o número da numeroConta"
+                       [ngClass]="{'ng-invalid ng-dirty': numeroConta.invalid && numeroConta.touched}"
                        required pInputText appApenasNumerosDirective/>
-                <div *ngIf="conta.invalid && (conta.dirty || conta.touched)"
+                <div *ngIf="numeroConta.invalid && (numeroConta.dirty || numeroConta.touched)"
                      class="alert" style="padding: 0; margin: 0">
                     <span class="alert-text">O campo é obrigatório!</span>
                 </div>
@@ -138,7 +138,7 @@
                            id="dataCadastro"
                            name="dataCadastro"
                            class="form-control"
-                           ngModel="{{ resource?.dataCadastro }}"
+                           ngModel="{{ resource?.dataCadastro | date:'dd/MM/yyyy' }}"
                            pInputText disabled appApenasLetrasDirective/>
                 </div>
             </div>

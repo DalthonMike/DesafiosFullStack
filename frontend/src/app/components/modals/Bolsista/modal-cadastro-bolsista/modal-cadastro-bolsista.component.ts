@@ -5,7 +5,6 @@ import { BolsistaModel } from "../../../../model/bolsista.model";
 import { DialogService, DynamicDialogRef } from "primeng/dynamicdialog";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
-import {ListaBolsistaComponent} from "../../../lista-bolsista/lista-bolsista.component";
 
 @Component({
     selector: 'app-modal-cadastro-bolsista',
@@ -61,6 +60,11 @@ export class ModalCadastroBolsistaComponent implements OnInit {
                     progressBar: true
                 });
             }
+        }, (error) => {
+            this.toastr.error(error.error.message, error.error.error, {
+                timeOut: 3000,
+                progressBar: true
+            });
         });
     }
 

@@ -18,7 +18,7 @@ export class ModalEdicaoBolsistaComponent implements OnInit {
     identificadores: any[] = [];
 
     public resource = new BolsistaModel();
-    private dadosBolsista: any;
+    private idBolsista: number;
 
     constructor(
         private bolsistaService: BolsistaService,
@@ -31,15 +31,11 @@ export class ModalEdicaoBolsistaComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.bancos = ["Banco do Brasil", "Banco Itau", "Santander"]
-        this.identificadores = ["CPF", "Carteira de identidade", "CNH"]
-        this.dadosBolsista = this.dialogConfig.data;
+        this.listarTodosTiposIdentificadores();
+        this.listarTodosBancos();
 
-        this.prepararForm(this.dadosBolsista);
-    }
-
-    prepararForm(dadosBolsista: any) {
-        this.resource = dadosBolsista;
+        this.resource = this.dialogConfig.data;
+        this.idBolsista = this.dialogConfig.data?.id;
     }
 
     onSubmit(bolsistaForm: NgForm) {
@@ -55,32 +51,33 @@ export class ModalEdicaoBolsistaComponent implements OnInit {
         }
     }
 
-    salvar(bolsistaForm: any) {
+    salvar(bolsistaForm: NgForm) {
 
-        this.dialogRef.close({ salvamentoConfirmado: true });
-        this.toastr.success("Edição realizado com sucesso!", "success", {
-            timeOut: 3000,
-            progressBar: true
+
+        this.resource = bolsistaForm.value;
+        this.resource.id = this.idBolsista;
+
+        this.bolsistaService.cadastro(this.resource).subscribe(response => {
+            if (response.status == 200) {
+                this.dialogRef.close({ salvamentoConfirmado: true });
+                this.toastr.success("Edição realizado com sucesso!", "success", {
+                    timeOut: 3000,
+                    progressBar: true
+                });
+            }
         });
-
-        //TODO lembrar de voltar aqui para descomentar requisição para o backend.\\
-        // this.bolsistaService.cadastro(bolsistaForm).subscribe(response => {
-        //
-        //     if (response.status == 200) {
-        //
-        //     }
-        // });
     }
 
-    buscarBolsistaPorId(id: number) {
+    listarTodosTiposIdentificadores(): void {
+        this.bolsistaService.listarTodosTiposIdentificadores().subscribe(response => {
+            this.identificadores = response;
+        })
+    }
 
-        //TODO lembrar de descomentar quando back estiver pronto
-        // this.bolsistaService.buscarPorId(id).subscribe(response => {
-        //
-        //     if (response.status === 200) {
-        //         this.dadosBolsista = response.body;
-        //     }
-        // });
+    listarTodosBancos(): void {
+        this.bolsistaService.listarTodosBancos().subscribe(response => {
+            this.bancos = response;
+        })
     }
 
     cancelar() {
