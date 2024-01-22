@@ -56,10 +56,10 @@
                                         class="botoes-table p-button-rounded p-button-info p-button-outlined"></button>
                                 <button
                                         pButton type="button"
-                                        pTooltip="Deletar"
-                                        icon="pi pi-trash" (click)="deletar(bolsista)"
+                                        pTooltip="Excluir"
+                                        icon="pi pi-trash" (click)="confirmarExclusao(bolsista.id)"
                                         class="botoes-table p-button-outlined p-button-rounded p-button-danger"
-                                        *ngIf="!verificaSeExistePagamentoPagoOuSolicitado(bolsista)"
+                                        [disabled]="verificaSeExistePagamentoPagoOuSolicitado(bolsista)"
                                 ></button>
                                 <button style="margin-left: 10px"
                                         pButton type="button"
@@ -74,3 +74,4 @@
         </div>
     </div>
 </div>
+<p-confirmDialog></p-confirmDialog>

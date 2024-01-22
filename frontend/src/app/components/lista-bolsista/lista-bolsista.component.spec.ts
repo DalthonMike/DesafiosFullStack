@@ -5,6 +5,7 @@ import { DialogService } from "primeng/dynamicdialog";
 import { BolsistaService } from "../../service/bolsista.service";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterTestingModule } from "@angular/router/testing";
+import { ToastrModule } from "ngx-toastr";
 
 describe('ListaBolsistaComponent', () => {
   let component: ListaBolsistaComponent;
@@ -13,10 +14,11 @@ describe('ListaBolsistaComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ListaBolsistaComponent ],
-      providers: [DialogService, BolsistaService],
+      providers: [DialogService, BolsistaService, ],
       imports: [
         HttpClientModule,
-        RouterTestingModule
+        RouterTestingModule,
+        ToastrModule.forRoot()
       ]
     })
     .compileComponents();

@@ -25,6 +25,8 @@ import { ModalVisualizacaoBolsistaComponent } from "./components/modals/Bolsista
 import { ModalEdicaoBolsistaComponent } from "./components/modals/Bolsista/modal-edicao-bolsista/modal-edicao-bolsista.component";
 import { ListaPagamentoComponent } from "./components/lista-pagamento/lista-pagamento.component";
 import { RouterModule } from "@angular/router";
+import { ConfirmationService } from "primeng/api";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
 
 @NgModule({
   declarations: [
@@ -56,8 +58,9 @@ import { RouterModule } from "@angular/router";
       timeOut: 3000,
       positionClass: 'toast-top-right'
     }),
+    ConfirmDialogModule,
   ],
-  providers: [DialogService, ToastrService],
+  providers: [DialogService, ToastrService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
