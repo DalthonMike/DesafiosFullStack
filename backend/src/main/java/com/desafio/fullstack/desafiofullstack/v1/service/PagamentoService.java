@@ -41,10 +41,32 @@ public class PagamentoService {
     }
 
     public Pagamento editar(PagamentoRequest pagamentoRequest) {
+        preCondicaoParaEditar(pagamentoRequest);
         return pagamentoRepository.save(pagamentoRequestConverter.toEntity(pagamentoRequest));
     }
 
     public void deletar(Pagamento pagamento) {
         pagamentoRepository.delete(pagamento);
+    }
+
+    public void preCondicaoParaEditar(PagamentoRequest pagamentoEdicao) {
+        Pagamento pagamentoVersaoAtual = buscarPorId(pagamentoEdicao.getId());
+
+        switch (pagamentoVersaoAtual.getStatus()) {
+            case NAO_REALIZADO:
+                if (!(StatusPagamentoEnum.SOLICITADO.equals(pagamentoEdicao.getStatus()) || StatusPagamentoEnum.CANCELADO.equals(pagamentoEdicao.getStatus()))) {
+                    throw new NegocioException("O pagamento não pode ser alterado para " + pagamentoEdicao.getStatus() + " pois está com o status: " + pagamentoVersaoAtual.getStatus());
+                }
+                break;
+            case SOLICITADO:
+                if (!(StatusPagamentoEnum.PAGO.equals(pagamentoEdicao.getStatus()) || StatusPagamentoEnum.CANCELADO.equals(pagamentoEdicao.getStatus()))) {
+                    throw new NegocioException("O pagamento não pode ser alterado para " + pagamentoEdicao.getStatus() + " pois está com o status: " + pagamentoVersaoAtual.getStatus());
+                }
+                break;
+            case PAGO:
+            case CANCELADO:
+                throw new NegocioException("O pagamento com o status " + pagamentoVersaoAtual.getStatus() + " não pode ser alterado");
+            default:
+        }
     }
 }
