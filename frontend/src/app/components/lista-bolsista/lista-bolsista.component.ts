@@ -67,7 +67,7 @@ export class ListaBolsistaComponent implements OnInit {
         });
     }
 
-    visualizar(id: any) {
+    visualizar(bolsista: any) {
         this.dialogService.open(ModalVisualizacaoBolsistaComponent, {
             header: 'Visualizar Bolsista',
             width: 'auto',
@@ -76,7 +76,7 @@ export class ListaBolsistaComponent implements OnInit {
             baseZIndex: 10000,
             closeOnEscape: true,
             closable: true,
-            data: id,
+            data: bolsista,
         });
     }
 

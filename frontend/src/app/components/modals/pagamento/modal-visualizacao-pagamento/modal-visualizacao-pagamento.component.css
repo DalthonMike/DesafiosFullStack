@@ -1,0 +1,9 @@
+.alert {
+    padding: 0;
+    margin: 0;
+}
+
+.alert-text {
+    font-size: 10px;
+    color: red;
+}

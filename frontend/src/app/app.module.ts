@@ -28,6 +28,7 @@ import { ListaPagamentoComponent } from "./components/lista-pagamento/lista-paga
 import { ModalCadastroPagamentoComponent } from "./components/modals/pagamento/modal-cadastro-pagamento/modal-cadastro-pagamento.component";
 import { ConfirmationService } from "primeng/api";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
+import { ModalVisualizacaoPagamentoComponent } from "./components/modals/pagamento/modal-visualizacao-pagamento/modal-visualizacao-pagamento.component";
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ConfirmDialogModule } from "primeng/confirmdialog";
     ModalEdicaoBolsistaComponent,
     ListaPagamentoComponent,
     ModalCadastroPagamentoComponent,
+    ModalVisualizacaoPagamentoComponent,
     ApenasLetrasDirective,
     ApenasNumerosDirective,
   ],

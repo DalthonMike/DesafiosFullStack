@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from "primeng/dynamicdialog";
 
-import { ModalVisualizacaoBolsistaComponent } from "../modals/Bolsista/modal-visualizacao-bolsista/modal-visualizacao-bolsista.component";
 import { ModalEdicaoBolsistaComponent } from "../modals/Bolsista/modal-edicao-bolsista/modal-edicao-bolsista.component";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalCadastroPagamentoComponent } from "../modals/pagamento/modal-cadastro-pagamento/modal-cadastro-pagamento.component";
 import { PagamentoModel } from "../../model/pagamento.model";
 import { PagamentoService } from "../../service/pagamento.service";
+import { ModalVisualizacaoPagamentoComponent } from "../modals/pagamento/modal-visualizacao-pagamento/modal-visualizacao-pagamento.component";
 
 @Component({
   selector: 'app-lista-pagamento',
@@ -65,8 +65,8 @@ export class ListaPagamentoComponent implements OnInit {
     });
   }
 
-  visualizar(id: any) {
-    this.dialogService.open(ModalVisualizacaoBolsistaComponent, {
+  visualizar(pagamentos: any) {
+    this.dialogService.open(ModalVisualizacaoPagamentoComponent, {
       header: 'Visualizar Bolsista',
       width: 'auto',
       height: 'auto',
@@ -74,7 +74,7 @@ export class ListaPagamentoComponent implements OnInit {
       baseZIndex: 10000,
       closeOnEscape: true,
       closable: true,
-      data: id,
+      data: pagamentos,
     });
   }
 

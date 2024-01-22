@@ -24,25 +24,6 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-top: 10px;">
-            <div class="col-5">
-                <h6>Status do pagamento:</h6>
-            </div>
-            <div class="col-12">
-                <p-dropdown [options]="statusPagamento"
-                            id="status"
-                            name="status"
-                            #status="ngModel"
-                            [(ngModel)]="resource.status"
-                            [required]="!resource.status"
-                            [ngClass]="{'ng-invalid ng-dirty': status.invalid && status.touched}"
-                            placeholder="Selecione" [style]="{ 'width': '100%' }"></p-dropdown>
-                <div *ngIf="status.invalid && (status.dirty || status.touched)"
-                     class="alert" style="padding: 0; margin: 0">
-                    <span class="alert-text">O campo é obrigatório!</span>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col-4">
                 <h6>Valor:</h6>
