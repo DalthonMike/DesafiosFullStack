@@ -90,7 +90,7 @@ export class ListaBolsistaComponent implements OnInit {
             header: 'Exclusão',
             icon: 'pi pi-exclamation-triangle',
             accept: () => this.deletar(id),
-            reject: () => {}
+            reject: () => {},
         });
     }
 
@@ -106,7 +106,8 @@ export class ListaBolsistaComponent implements OnInit {
                     })
                 },
                 () => {
-                    this.toastr.success("Edição realizado com sucesso!", "success", {
+                    this.listarTodos();
+                    this.toastr.success("Exclusão realizada com sucesso!", "success", {
                         timeOut: 3000,
                         progressBar: true
                     })
