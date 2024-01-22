@@ -49,4 +49,10 @@ public class BolsistaController implements IBolsistaController {
         return ResponseEntity.ok(bolsistaResponseConverter.toResponse(bolsistaCadastrado));
     }
 
+    @Override
+    public ResponseEntity deletar(Long id) {
+        bolsistaService.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
