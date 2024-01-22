@@ -67,14 +67,12 @@ export class ModalCadastroBolsistaComponent implements OnInit {
     listarTodosTiposIdentificadores(): void {
         this.bolsistaService.listarTodosTiposIdentificadores().subscribe(response => {
             this.identificadores = response;
-            console.log(this.identificadores)
         })
     }
 
     listarTodosBancos(): void {
         this.bolsistaService.listarTodosBancos().subscribe(response => {
             this.bancos = response;
-            console.log(this.identificadores)
         })
     }
 

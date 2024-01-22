@@ -44,7 +44,7 @@ export class BolsistaService {
     }
 
     deletar(id: number) {
-        return this.http.post<any>(`${this.pathBase}/bolsista/${id}`, {
+        return this.http.delete<any>(`${this.pathBase}/bolsista/${id}`, {
             observe: 'response',
         });
     }
