@@ -2,16 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { DialogService } from "primeng/dynamicdialog";
 import { BolsistaService } from "../../service/bolsista.service";
 
-import {
-    ModalCadastroBolsistaComponent
-} from "../modals/Bolsista/modal-cadastro-bolsista/modal-cadastro-bolsista.component";
-import {
-    ModalVisualizacaoBolsistaComponent
-} from "../modals/Bolsista/modal-visualizacao-bolsista/modal-visualizacao-bolsista.component";
+import { ModalCadastroBolsistaComponent } from "../modals/Bolsista/modal-cadastro-bolsista/modal-cadastro-bolsista.component";
+import { ModalVisualizacaoBolsistaComponent } from "../modals/Bolsista/modal-visualizacao-bolsista/modal-visualizacao-bolsista.component";
 import { ModalEdicaoBolsistaComponent } from "../modals/Bolsista/modal-edicao-bolsista/modal-edicao-bolsista.component";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
-import {ConfirmationService} from "primeng/api";
+import { ConfirmationService } from "primeng/api";
 
 @Component({
     selector: 'app-lista-bolsista',
@@ -21,7 +17,7 @@ import {ConfirmationService} from "primeng/api";
 export class ListaBolsistaComponent implements OnInit {
 
     bolsista: any;
-    bolsistas: any[] = []
+    bolsistas: any[] = [];
 
     constructor(
         private dialogService: DialogService,

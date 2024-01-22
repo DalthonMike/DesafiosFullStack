@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
-import { DialogService, DynamicDialogRef } from "primeng/dynamicdialog";
+import { DialogService, DynamicDialogConfig, DynamicDialogRef } from "primeng/dynamicdialog";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 import { PagamentoModel } from "../../../../model/pagamento.model";
@@ -16,7 +16,7 @@ export class ModalCadastroPagamentoComponent implements OnInit {
 
     statusPagamento: String[] = [];
 
-    identificadores: String[] = [];
+    private idBolsista: any;
 
     public resource = new PagamentoModel();
 
@@ -25,25 +25,27 @@ export class ModalCadastroPagamentoComponent implements OnInit {
         private dialogService: DialogService,
         private toastr: ToastrService,
         private router: Router,
-        private dialogRef: DynamicDialogRef
+        private dialogRef: DynamicDialogRef,
+        private dialogConfig: DynamicDialogConfig,
         ) {
     }
 
     ngOnInit(): void {
+
+        this.idBolsista = this.dialogConfig.data;
         this.listarStatusPagamento();
     }
 
     onSubmit(pagamentoForm: NgForm) {
 
         if (pagamentoForm.valid) {
+
+            pagamentoForm.value.idBolsista = this.idBolsista;
             this.salvar(pagamentoForm);
         } else {
-            pagamentoForm.form["controls"]["nome"].markAsDirty();
-            pagamentoForm.form["controls"]["identificador"].markAsDirty();
-            pagamentoForm.form["controls"]["numeroIdentificador"].markAsDirty();
-            pagamentoForm.form["controls"]["banco"].markAsDirty();
-            pagamentoForm.form["controls"]["numeroAgencia"].markAsDirty();
-            pagamentoForm.form["controls"]["numeroConta"].markAsDirty();
+            pagamentoForm.form["controls"]["dataPagamento"].markAsDirty();
+            pagamentoForm.form["controls"]["status"].markAsDirty();
+            pagamentoForm.form["controls"]["valor"].markAsDirty();
         }
     }
 
@@ -64,11 +66,11 @@ export class ModalCadastroPagamentoComponent implements OnInit {
     listarStatusPagamento(): void {
         this.pagamentoService.listarStatusPagamento().subscribe(response => {
             this.statusPagamento = response;
-            console.log(this.identificadores)
+            console.log(this.statusPagamento)
         });
     }
 
     cancelar() {
-        this.dialogRef.close({ cancelamento: true });
+        this.dialogRef.destroy();
     }
 }

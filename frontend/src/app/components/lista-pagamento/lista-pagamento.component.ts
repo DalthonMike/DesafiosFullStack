@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from "primeng/dynamicdialog";
-import { BolsistaService } from "../../service/bolsista.service";
 
 import { ModalVisualizacaoBolsistaComponent } from "../modals/Bolsista/modal-visualizacao-bolsista/modal-visualizacao-bolsista.component";
 import { ModalEdicaoBolsistaComponent } from "../modals/Bolsista/modal-edicao-bolsista/modal-edicao-bolsista.component";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalCadastroPagamentoComponent } from "../modals/pagamento/modal-cadastro-pagamento/modal-cadastro-pagamento.component";
+import { PagamentoModel } from "../../model/pagamento.model";
+import { PagamentoService } from "../../service/pagamento.service";
 
 @Component({
   selector: 'app-lista-pagamento',
@@ -15,10 +16,11 @@ import { ModalCadastroPagamentoComponent } from "../modals/pagamento/modal-cadas
 export class ListaPagamentoComponent implements OnInit {
 
   dadosBolsista: any;
+  pagamentos: PagamentoModel[] = [];
 
   constructor(
       private dialogService: DialogService,
-      private bolsistaService: BolsistaService,
+      private pagamentoService: PagamentoService,
       private router: Router,
       private route: ActivatedRoute
   ) {
@@ -31,9 +33,11 @@ export class ListaPagamentoComponent implements OnInit {
 
       console.log("dadosBolsista", this.dadosBolsista);
     });
+
+    this.listarPagamentosPorBolsistaId(this.dadosBolsista?.id);
   }
 
-  adicionarPagamento() {
+  openModalCadastroPagamento(idBolsista: number) {
     this.dialogService.open(ModalCadastroPagamentoComponent, {
       header: 'Inserir Pagamento',
       width: 'auto',
@@ -42,6 +46,9 @@ export class ListaPagamentoComponent implements OnInit {
       baseZIndex: 10000,
       closeOnEscape: false,
       closable: false,
+      data: idBolsista,
+    }).onDestroy.subscribe(() => {
+      this.listarPagamentosPorBolsistaId(idBolsista);
     });
   }
 
@@ -54,7 +61,6 @@ export class ListaPagamentoComponent implements OnInit {
       baseZIndex: 10000,
       closeOnEscape: true,
       closable: true,
-      //(data) irá enviar o id do bolsista para consulta da visualização;
       data: id,
     });
   }
@@ -68,14 +74,25 @@ export class ListaPagamentoComponent implements OnInit {
       baseZIndex: 10000,
       closeOnEscape: true,
       closable: true,
-      //(data) irá enviar o id do bolsista para consulta da visualização;
       data: id,
     });
   }
 
   deletar(id: number) {
-    this.bolsistaService.deletar(id).subscribe(response => {
+    this.pagamentoService.deletar(id).subscribe(response => {
 
+    });
+  }
+
+  listarTodos(): void {
+    this.pagamentoService.listarTodos().subscribe(response => {
+      this.pagamentos = response;
+    })
+  }
+
+  listarPagamentosPorBolsistaId(idBolsista: number): any {
+    this.pagamentoService.listarPagamentosPorBolsistaId(idBolsista).subscribe(response => {
+      this.pagamentos = response.body.pagamentos;
     });
   }
 }

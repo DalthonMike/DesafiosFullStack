@@ -10,7 +10,7 @@ import { CardModule } from "primeng/card";
 import { TooltipModule } from "primeng/tooltip";
 import { DialogModule } from "primeng/dialog";
 import { DropdownModule } from "primeng/dropdown";
-import { DialogService, DynamicDialogModule, DynamicDialogRef } from "primeng/dynamicdialog";
+import { DialogService, DynamicDialogConfig, DynamicDialogModule, DynamicDialogRef } from "primeng/dynamicdialog";
 import { FormsModule } from "@angular/forms";
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
@@ -29,7 +29,8 @@ describe('ModalCadastroBolsistaComponent', () => {
           DialogService,
           PagamentoService,
           NoopAnimationsModule,
-          DynamicDialogRef],
+          DynamicDialogRef,
+          DynamicDialogConfig],
       imports: [
         BrowserAnimationsModule,
         BrowserModule,

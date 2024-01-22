@@ -15,7 +15,6 @@
                            #dataPagamento="ngModel"
                            class="form-control"
                            [(ngModel)]="resource.dataPagamento"
-                           placeholder="Digite o seu nome completo"
                            [ngClass]="{'ng-invalid ng-dirty': dataPagamento.invalid && dataPagamento.touched}"
                            required pInputText/>
                 </div>
@@ -56,7 +55,7 @@
                            #valor="ngModel"
                            class="form-control"
                            [(ngModel)]="resource.valor"
-                           placeholder="Digite o seu "
+                           placeholder="Digite o valor aqui"
                            [ngClass]="{'ng-invalid ng-dirty': valor.invalid && valor.touched}"
                            required pInputText appApenasNumerosDirective/>
                 </div>

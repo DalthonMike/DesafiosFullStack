@@ -24,7 +24,7 @@ export class PagamentoService {
     }
 
     listarStatusPagamento() {
-        return this.http.get<any[]>(`${this.pathBase}/enums/bancos`);
+        return this.http.get<any[]>(`${this.pathBase}/enums/status-pagamento`);
     }
 
     cadastro(formData: PagamentoModel) {
@@ -33,8 +33,8 @@ export class PagamentoService {
         });
     }
 
-    buscarPorId(id: number) {
-        return this.http.post<any>(`${this.pathBase}/pagamento/${id}`, {
+    listarPagamentosPorBolsistaId(idBolsista: number) {
+        return this.http.get<any>(`${this.pathBase}/bolsista/${idBolsista}`, {
             observe: 'response',
         });
     }
