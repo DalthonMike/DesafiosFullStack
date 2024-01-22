@@ -5,7 +5,7 @@ import { ListaPagamentoComponent } from "./components/lista-pagamento/lista-paga
 
 const routes: Routes = [
   { path: 'lista-bolsista', component: ListaBolsistaComponent },
-  { path: 'lista-pagamento/:id', component: ListaPagamentoComponent }
+  { path: 'lista-pagamento', component: ListaPagamentoComponent }
 ];
 
 @NgModule({
