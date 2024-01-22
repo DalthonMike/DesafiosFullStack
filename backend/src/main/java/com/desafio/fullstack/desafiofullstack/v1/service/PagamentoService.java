@@ -43,4 +43,8 @@ public class PagamentoService {
     public Pagamento editar(PagamentoRequest pagamentoRequest) {
         return pagamentoRepository.save(pagamentoRequestConverter.toEntity(pagamentoRequest));
     }
+
+    public void deletar(Pagamento pagamento) {
+        pagamentoRepository.delete(pagamento);
+    }
 }
