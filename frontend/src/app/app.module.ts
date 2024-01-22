@@ -11,6 +11,7 @@ import { DropdownModule } from "primeng/dropdown";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { InputTextModule } from "primeng/inputtext";
+import { RouterModule } from "@angular/router";
 import { ToastrModule, ToastrService } from "ngx-toastr";
 
 import { ApenasLetrasDirective } from "./components/directives/olny-text";
@@ -24,7 +25,7 @@ import { ModalCadastroBolsistaComponent } from './components/modals/Bolsista/mod
 import { ModalVisualizacaoBolsistaComponent } from "./components/modals/Bolsista/modal-visualizacao-bolsista/modal-visualizacao-bolsista.component";
 import { ModalEdicaoBolsistaComponent } from "./components/modals/Bolsista/modal-edicao-bolsista/modal-edicao-bolsista.component";
 import { ListaPagamentoComponent } from "./components/lista-pagamento/lista-pagamento.component";
-import { RouterModule } from "@angular/router";
+import { ModalCadastroPagamentoComponent } from "./components/modals/pagamento/modal-cadastro-pagamento/modal-cadastro-pagamento.component";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { RouterModule } from "@angular/router";
     ModalVisualizacaoBolsistaComponent,
     ModalEdicaoBolsistaComponent,
     ListaPagamentoComponent,
+    ModalCadastroPagamentoComponent,
     ApenasLetrasDirective,
     ApenasNumerosDirective,
   ],

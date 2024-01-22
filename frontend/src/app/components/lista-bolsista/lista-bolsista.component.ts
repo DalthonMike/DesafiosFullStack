@@ -88,7 +88,9 @@ export class ListaBolsistaComponent implements OnInit {
   }
 
 
-    gerenciarPagamentos(id: number): void {
-        this.router.navigate(['/lista-pagamento/' + id]);
+    gerenciarPagamentos(bolsista: number): void {
+
+        const objetoSerializado = encodeURIComponent(JSON.stringify(bolsista));
+        this.router.navigate(['/lista-pagamento/'], { queryParams: { dados: objetoSerializado }});
     }
 }

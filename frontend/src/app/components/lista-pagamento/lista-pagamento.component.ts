@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DialogService } from "primeng/dynamicdialog";
 import { BolsistaService } from "../../service/bolsista.service";
 
-import { ModalCadastroBolsistaComponent } from "../modals/Bolsista/modal-cadastro-bolsista/modal-cadastro-bolsista.component";
 import { ModalVisualizacaoBolsistaComponent } from "../modals/Bolsista/modal-visualizacao-bolsista/modal-visualizacao-bolsista.component";
 import { ModalEdicaoBolsistaComponent } from "../modals/Bolsista/modal-edicao-bolsista/modal-edicao-bolsista.component";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ModalCadastroPagamentoComponent } from "../modals/pagamento/modal-cadastro-pagamento/modal-cadastro-pagamento.component";
 
 @Component({
   selector: 'app-lista-pagamento',
@@ -14,8 +14,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class ListaPagamentoComponent implements OnInit {
 
-  bolsista: any;
-  bolsistas: any[] = []
+  dadosBolsista: any;
 
   constructor(
       private dialogService: DialogService,
@@ -26,23 +25,17 @@ export class ListaPagamentoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      const id = params['id'];
-      // Use o valor do 'id' conforme necessário
+    this.route.queryParams.subscribe(params => {
+      const objetoSerializado = params['dados'];
+      this.dadosBolsista = JSON.parse(decodeURIComponent(objetoSerializado));
+
+      console.log("dadosBolsista", this.dadosBolsista);
     });
-    this.listarTodos();
   }
 
-  listarTodos(): void {
-    // this.bolsistaService.listarTodos().subscribe(response => {
-    //   this.bolsistas = response
-    //   console.log(this.bolsistas);
-    // })
-  }
-
-  adicionarBolsista() {
-    this.dialogService.open(ModalCadastroBolsistaComponent, {
-      header: 'Inserir Bolsista',
+  adicionarPagamento() {
+    this.dialogService.open(ModalCadastroPagamentoComponent, {
+      header: 'Inserir Pagamento',
       width: 'auto',
       height: 'auto',
       modal: true,
@@ -54,7 +47,7 @@ export class ListaPagamentoComponent implements OnInit {
 
   editar(id: any) {
     this.dialogService.open(ModalEdicaoBolsistaComponent, {
-      header: 'Editar Bolsista',
+      header: 'Editar Pagamento',
       width: 'auto',
       height: 'auto',
       modal: true,
