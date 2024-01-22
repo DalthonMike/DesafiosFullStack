@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
@@ -21,6 +21,8 @@ public class PagamentoResponse {
     private Long idBolsista;
 
     private LocalDate dataPagamento;
+
+    private BigDecimal valor;
 
     private StatusPagamentoEnum status;
 }
