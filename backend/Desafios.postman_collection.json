@@ -275,7 +275,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": 1,\r\n  \"idBolsista\": 1,\r\n  \"dataPagamento\": \"2024-01-19\",\r\n  \"valor\": 1000.00,\r\n  \"status\": \"SOLICITADO\"\r\n}\r\n",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"idBolsista\": 2,\r\n  \"dataPagamento\": \"2024-01-19\",\r\n  \"valor\": 1000.00,\r\n  \"status\": \"PAGO\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -294,6 +294,28 @@
 								"v1",
 								"pagamento",
 								"editar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/pagamento/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"pagamento",
+								"1"
 							]
 						}
 					},

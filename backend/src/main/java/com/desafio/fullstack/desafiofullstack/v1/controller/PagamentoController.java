@@ -51,4 +51,11 @@ public class PagamentoController implements IPagamentoController {
         pagamentoService.editar(request);
         return ResponseEntity.noContent().build();
     }
+
+    @Override
+    public ResponseEntity deletar(Long id) {
+        Pagamento pagamento = pagamentoService.buscarPorId(id);
+        pagamentoService.deletar(pagamento);
+        return null;
+    }
 }

@@ -6,7 +6,7 @@ import com.desafio.fullstack.desafiofullstack.v1.Enums.StatusPagamentoEnum;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
-public interface IIdentificadorController {
+public interface IEnumsController {
 
     @GetMapping("/identificadores")
     ResponseEntity<IdentificadorEnum[]> buscarTodosIdentificadores();

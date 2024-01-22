@@ -1,13 +1,9 @@
 package com.desafio.fullstack.desafiofullstack.v1.controller.IController;
 
-import com.desafio.fullstack.desafiofullstack.v1.dto.request.BolsistaRequest;
 import com.desafio.fullstack.desafiofullstack.v1.dto.request.PagamentoRequest;
 import com.desafio.fullstack.desafiofullstack.v1.dto.response.PagamentoResponse;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,4 +21,6 @@ public interface IPagamentoController {
     @PostMapping("/editar")
     ResponseEntity editar(@RequestBody PagamentoRequest request);
 
+    @DeleteMapping("/{id}")
+    ResponseEntity deletar(@PathVariable Long id);
 }
