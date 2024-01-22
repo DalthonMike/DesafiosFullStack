@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from "primeng/dynamicdialog";
 
-import { ModalEdicaoBolsistaComponent } from "../modals/Bolsista/modal-edicao-bolsista/modal-edicao-bolsista.component";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalCadastroPagamentoComponent } from "../modals/pagamento/modal-cadastro-pagamento/modal-cadastro-pagamento.component";
 import { PagamentoModel } from "../../model/pagamento.model";
 import { PagamentoService } from "../../service/pagamento.service";
 import { ModalVisualizacaoPagamentoComponent } from "../modals/pagamento/modal-visualizacao-pagamento/modal-visualizacao-pagamento.component";
+import {ModalEdicaoPagamentoComponent} from "../modals/pagamento/modal-edicao-pagamento/modal-edicao-pagamento.component";
 
 @Component({
   selector: 'app-lista-pagamento',
@@ -52,8 +52,8 @@ export class ListaPagamentoComponent implements OnInit {
     });
   }
 
-  editar(id: any) {
-    this.dialogService.open(ModalEdicaoBolsistaComponent, {
+  editar(bolsista: any) {
+    this.dialogService.open(ModalEdicaoPagamentoComponent, {
       header: 'Editar Pagamento',
       width: 'auto',
       height: 'auto',
@@ -61,7 +61,9 @@ export class ListaPagamentoComponent implements OnInit {
       baseZIndex: 10000,
       closeOnEscape: true,
       closable: true,
-      data: id,
+      data: bolsista,
+    }).onDestroy.subscribe(() => {
+      this.listarPagamentosPorBolsistaId(bolsista.idBolsista);
     });
   }
 
@@ -94,5 +96,20 @@ export class ListaPagamentoComponent implements OnInit {
     this.pagamentoService.listarPagamentosPorBolsistaId(idBolsista).subscribe(response => {
       this.pagamentos = response.body.pagamentos;
     });
+  }
+
+  voltar() {
+    this.router.navigate(['/lista-bolsista']);
+  }
+
+  getSeverity(status: string): any {
+    switch (status) {
+      case 'PAGO':
+        return 'success';
+      case 'NAO_REALIZADO':
+        return 'warning';
+      case 'CANCELADO':
+        return 'danger';
+    }
   }
 }

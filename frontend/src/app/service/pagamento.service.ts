@@ -33,6 +33,12 @@ export class PagamentoService {
         });
     }
 
+    editar(formData: PagamentoModel) {
+        return this.http.post<any>(`${this.pathBase}/pagamento/editar`, formData, {
+            observe: 'response',
+        });
+    }
+
     listarPagamentosPorBolsistaId(idBolsista: number) {
         return this.http.get<any>(`${this.pathBase}/bolsista/${idBolsista}`, {
             observe: 'response',

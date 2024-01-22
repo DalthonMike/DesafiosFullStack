@@ -29,6 +29,8 @@ import { ModalCadastroPagamentoComponent } from "./components/modals/pagamento/m
 import { ConfirmationService } from "primeng/api";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { ModalVisualizacaoPagamentoComponent } from "./components/modals/pagamento/modal-visualizacao-pagamento/modal-visualizacao-pagamento.component";
+import { ModalEdicaoPagamentoComponent } from "./components/modals/pagamento/modal-edicao-pagamento/modal-edicao-pagamento.component";
+import { TagModule } from "primeng/tag";
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { ModalVisualizacaoPagamentoComponent } from "./components/modals/pagamen
     ModalEdicaoBolsistaComponent,
     ListaPagamentoComponent,
     ModalCadastroPagamentoComponent,
+    ModalEdicaoPagamentoComponent,
     ModalVisualizacaoPagamentoComponent,
     ApenasLetrasDirective,
     ApenasNumerosDirective,
@@ -63,6 +66,7 @@ import { ModalVisualizacaoPagamentoComponent } from "./components/modals/pagamen
       positionClass: 'toast-top-right'
     }),
     ConfirmDialogModule,
+    TagModule,
   ],
   providers: [DialogService, ToastrService, ConfirmationService],
   bootstrap: [AppComponent]
