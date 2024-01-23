@@ -2,7 +2,7 @@ import { inject, TestBed } from '@angular/core/testing';
 
 import { BolsistaService } from './bolsista.service';
 import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
-import {BolsistaModel} from "../model/bolsista.model";
+import { BolsistaModel } from "../model/bolsista.model";
 
 describe('BolsistaService', () => {
   let service: BolsistaService;
@@ -23,9 +23,9 @@ describe('BolsistaService', () => {
   });
 
   it('retorna uma string vazia para getPathPageable()', () => {
-    const result = service.getPathPageable();
-    expect(result).toBeDefined();
-    expect(result).toEqual('');
+    const resultado = service.getPathPageable();
+    expect(resultado).toBeDefined();
+    expect(resultado).toEqual('');
   });
 
   it('retorna uma lista de Bolsistass pelo método listarTodos ', inject([BolsistaService], (bolsistaService: BolsistaService) => {
@@ -103,6 +103,27 @@ describe('BolsistaService', () => {
     const req = httpMock.expectOne(`${bolsistaService.pathBase}/bolsista/${bolsistaId}`);
     expect(req.request.method).toEqual('POST');
 
-    req.flush({ status: 200, data: { /* ...dados do bolsista... */ } });
+    req.flush({ status: 200, data: {
+        id: 1,
+        codigoBanco: 1234,
+        nome: 'Registro teste',
+        numeroAgencia: 3214213,
+        numeroConta: 4123124,
+        identificador: 'CPF',
+        banco: 'BRADESCO',
+        numeroIdentificador: 20294891379,
+        dataCadastro: new Date(),
+      } });
+  }));
+
+  it('Requisição do tipo DELETE para deletar bolsista deletar', inject([BolsistaService], (bolsistaService: BolsistaService) => {
+    const bolsistaId = 1;
+
+    bolsistaService.deletar(bolsistaId).subscribe(response => {
+      expect(response.status).toEqual(204);
+    });
+
+    const req = httpMock.expectOne(`${bolsistaService.pathBase}/bolsista/${bolsistaId}`);
+    expect(req.request.method).toEqual('DELETE');
   }));
 });
