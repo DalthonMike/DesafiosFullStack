@@ -60,6 +60,6 @@ public class PagamentoController implements IPagamentoController {
     public ResponseEntity deletar(Long id) {
         Pagamento pagamento = pagamentoService.buscarPorId(id);
         pagamentoService.deletar(pagamento);
-        return null;
+        return ResponseEntity.noContent().build();
     }
 }
