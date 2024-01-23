@@ -1,12 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {DialogService} from "primeng/dynamicdialog";
+import { Component, OnInit } from '@angular/core';
+import { DialogService } from "primeng/dynamicdialog";
 
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalCadastroPagamentoComponent } from "../modals/pagamento/modal-cadastro-pagamento/modal-cadastro-pagamento.component";
 import { PagamentoModel } from "../../model/pagamento.model";
 import { PagamentoService } from "../../service/pagamento.service";
 import { ModalVisualizacaoPagamentoComponent } from "../modals/pagamento/modal-visualizacao-pagamento/modal-visualizacao-pagamento.component";
-import { ModalEdicaoPagamentoComponent } from "../modals/pagamento/modal-edicao-pagamento/modal-edicao-pagamento.component";
+import {ModalEdicaoPagamentoComponent} from "../modals/pagamento/modal-edicao-pagamento/modal-edicao-pagamento.component";
+import { ConfirmationService } from "primeng/api";
 import { StatusPagamentoEnum } from "../../enums/StatusPagamento.enum";
 import { ToastrService } from "ngx-toastr";
 
@@ -20,15 +21,15 @@ export class ListaPagamentoComponent implements OnInit {
 
   dadosBolsista: any;
   pagamentos: PagamentoModel[] = [];
-
   statusPagamentoEnum = StatusPagamentoEnum;
 
   constructor(
       private dialogService: DialogService,
       private pagamentoService: PagamentoService,
-      private toastr: ToastrService,
       private router: Router,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private confirmationService: ConfirmationService,
+      private toastr: ToastrService
   ) {
   }
 
@@ -40,7 +41,7 @@ export class ListaPagamentoComponent implements OnInit {
       console.log("dadosBolsista", this.dadosBolsista);
     });
 
-    this.listarPagamentosPorBolsistaId(this.dadosBolsista?.id);
+    this.listarTodosNaoCancelados(this.dadosBolsista?.id);
   }
 
   openModalCadastroPagamento(idBolsista: number) {
@@ -54,11 +55,11 @@ export class ListaPagamentoComponent implements OnInit {
       closable: false,
       data: idBolsista,
     }).onDestroy.subscribe(() => {
-      this.listarPagamentosPorBolsistaId(idBolsista);
+      this.listarTodosNaoCancelados(idBolsista);
     });
   }
 
-  editar(bolsista: any, statusPagamento: any) {
+  openModalEditarPagamento(bolsista: any, statusPagamento: any) {
     if (statusPagamento !== StatusPagamentoEnum.PAGO && statusPagamento !== StatusPagamentoEnum.CANCELADO) {
       this.dialogService.open(ModalEdicaoPagamentoComponent, {
         header: 'Editar Pagamento',
@@ -70,7 +71,7 @@ export class ListaPagamentoComponent implements OnInit {
         closable: true,
         data: bolsista,
       }).onDestroy.subscribe(() => {
-        this.listarPagamentosPorBolsistaId(bolsista.idBolsista);
+        this.listarTodosNaoCancelados(bolsista.idBolsista);
       });
     } else {
       this.toastr.error("Não é possível editar o pagamento com o status (PAGO ou CANCELADO)", "Atenção!", {
@@ -94,9 +95,24 @@ export class ListaPagamentoComponent implements OnInit {
   }
 
   deletar(id: number) {
-    this.pagamentoService.deletar(id).subscribe(response => {
-
-    });
+    this.pagamentoService.deletar(id)
+        .subscribe(
+            () => {
+            },
+            (error) => {
+              this.toastr.error(error.error.message, error.error.error, {
+                timeOut: 3000,
+                progressBar: true
+              })
+            },
+            () => {
+              this.listarTodosNaoCancelados(this.dadosBolsista?.id);
+              this.toastr.success("Exclusão realizada com sucesso!", "success", {
+                timeOut: 3000,
+                progressBar: true
+              })
+            }
+        )
   }
 
   listarTodos(): void {
@@ -108,6 +124,12 @@ export class ListaPagamentoComponent implements OnInit {
   listarPagamentosPorBolsistaId(idBolsista: number): any {
     this.pagamentoService.listarPagamentosPorBolsistaId(idBolsista).subscribe(response => {
       this.pagamentos = response.body.pagamentos;
+    });
+  }
+
+  listarTodosNaoCancelados(idBolsista: number): any {
+    this.pagamentoService.listarTodosNaoCancelados(idBolsista).subscribe(response => {
+      this.pagamentos = response.body;
     });
   }
 
@@ -124,5 +146,15 @@ export class ListaPagamentoComponent implements OnInit {
       case 'CANCELADO':
         return 'danger';
     }
+  }
+
+  confirmarExclusao(id: number) {
+    this.confirmationService.confirm({
+      message: 'Deseja realmente excluir o pagamento?',
+      header: 'Exclusão',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => this.deletar(id),
+      reject: () => {},
+    });
   }
 }

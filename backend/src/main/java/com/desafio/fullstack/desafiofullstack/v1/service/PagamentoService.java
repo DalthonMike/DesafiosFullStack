@@ -3,7 +3,6 @@ package com.desafio.fullstack.desafiofullstack.v1.service;
 import com.desafio.fullstack.desafiofullstack.v1.Enums.StatusPagamentoEnum;
 import com.desafio.fullstack.desafiofullstack.v1.converter.request.PagamentoRequestConverter;
 import com.desafio.fullstack.desafiofullstack.v1.dto.request.PagamentoRequest;
-import com.desafio.fullstack.desafiofullstack.v1.dto.response.PagamentoResponse;
 import com.desafio.fullstack.desafiofullstack.v1.exception.NegocioException;
 import com.desafio.fullstack.desafiofullstack.v1.model.Pagamento;
 import com.desafio.fullstack.desafiofullstack.v1.repository.PagamentoRepository;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PagamentoService {
@@ -28,6 +26,10 @@ public class PagamentoService {
 
     public List<Pagamento> buscarTodosPorIdBolsista(Long idBolsista) {
         return pagamentoRepository.findAllByBolsistaId(idBolsista);
+    }
+
+    public List<Pagamento> buscarTodosIdBolsistaENaoCancelado(Long idBolsista) {
+        return pagamentoRepository.findAllByBolsistaIdAndStatusNot(idBolsista, StatusPagamentoEnum.CANCELADO);
     }
 
     public Pagamento buscarPorId(Long id) {

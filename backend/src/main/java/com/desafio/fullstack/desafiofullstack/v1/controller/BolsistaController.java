@@ -3,8 +3,8 @@ package com.desafio.fullstack.desafiofullstack.v1.controller;
 import com.desafio.fullstack.desafiofullstack.v1.controller.IController.IBolsistaController;
 import com.desafio.fullstack.desafiofullstack.v1.converter.request.BolsistaRequestConverter;
 import com.desafio.fullstack.desafiofullstack.v1.converter.response.BolsistaResponseConverter;
-import com.desafio.fullstack.desafiofullstack.v1.dto.response.BolsistaResponse;
 import com.desafio.fullstack.desafiofullstack.v1.dto.request.BolsistaRequest;
+import com.desafio.fullstack.desafiofullstack.v1.dto.response.BolsistaResponse;
 import com.desafio.fullstack.desafiofullstack.v1.model.Bolsista;
 import com.desafio.fullstack.desafiofullstack.v1.repository.BolsistaRepository;
 import com.desafio.fullstack.desafiofullstack.v1.service.BolsistaService;
@@ -30,7 +30,6 @@ public class BolsistaController implements IBolsistaController {
         this.bolsistaRequestConverter = bolsistaRequestConverter;
     }
 
-
     @Override
     public ResponseEntity<List<BolsistaResponse>> buscarTodos() {
         List<BolsistaResponse> bolsistaResponses = bolsistaResponseConverter.toResponse(bolsistaService.buscarTodos());
@@ -53,6 +52,12 @@ public class BolsistaController implements IBolsistaController {
     public ResponseEntity deletar(Long id) {
         bolsistaService.deletar(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @Override
+    public ResponseEntity<List<BolsistaResponse>> buscarTodosAtivos() {
+        List<BolsistaResponse> bolsistaResponses = bolsistaResponseConverter.toResponse(bolsistaService.buscarTodosAtivos());
+        return ResponseEntity.ok(bolsistaResponses);
     }
 
 }

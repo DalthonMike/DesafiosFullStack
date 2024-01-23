@@ -12,3 +12,13 @@
     color: inherit;
     outline: none;
 }
+
+@keyframes blinking {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+.blinking-button {
+    animation: blinking 1s infinite;
+}

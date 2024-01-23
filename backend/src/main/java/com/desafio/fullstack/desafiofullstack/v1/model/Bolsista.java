@@ -2,6 +2,7 @@ package com.desafio.fullstack.desafiofullstack.v1.model;
 
 import com.desafio.fullstack.desafiofullstack.v1.Enums.BancoEnum;
 import com.desafio.fullstack.desafiofullstack.v1.Enums.IdentificadorEnum;
+import com.desafio.fullstack.desafiofullstack.v1.Enums.StatusAtividade;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,7 +20,7 @@ public class Bolsista {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BOLSISTA_SEQ")
-    @SequenceGenerator(name = "BOLSISTA_SEQ", sequenceName = "BOLSISTA_SEQ", allocationSize = 1)
+    @SequenceGenerator(name = "BOLSISTA_SEQ", sequenceName = "BOLSISTA_SEQ", initialValue = 5, allocationSize = 1)
     private Long id;
 
     @Column(nullable = false)
@@ -46,5 +47,9 @@ public class Bolsista {
 
     @OneToMany(mappedBy = "bolsista")
     private List<Pagamento> pagamentos;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private StatusAtividade atividade;
 }
 

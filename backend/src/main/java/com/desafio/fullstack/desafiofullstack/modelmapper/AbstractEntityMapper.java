@@ -3,7 +3,7 @@ package com.desafio.fullstack.desafiofullstack.modelmapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class AbstractEntityMapper<R, E>  {
+public abstract class AbstractEntityMapper<R, E> {
 
     public abstract E toEntity(R request);
 

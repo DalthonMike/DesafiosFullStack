@@ -2,6 +2,7 @@ package com.desafio.fullstack.desafiofullstack.v1.service;
 
 
 import com.desafio.fullstack.desafiofullstack.v1.Enums.IdentificadorEnum;
+import com.desafio.fullstack.desafiofullstack.v1.Enums.StatusAtividade;
 import com.desafio.fullstack.desafiofullstack.v1.Enums.StatusPagamentoEnum;
 import com.desafio.fullstack.desafiofullstack.v1.exception.NegocioException;
 import com.desafio.fullstack.desafiofullstack.v1.model.Bolsista;
@@ -27,6 +28,10 @@ public class BolsistaService {
         return bolsistaRepository.findAll();
     }
 
+    public List<Bolsista> buscarTodosAtivos() {
+        return bolsistaRepository.findAllByAtividade(StatusAtividade.ATIVO);
+    }
+
     public Bolsista buscarPorId(Long id) {
         return bolsistaRepository.findById(id).orElseThrow(() -> new NegocioException("Não foi possível encontrar um bolsista com esse identificador: " + id));
     }
@@ -34,6 +39,7 @@ public class BolsistaService {
     public Bolsista cadastrar(Bolsista bolsista) {
 
         if (Objects.nonNull(bolsista.getId())) {
+            bolsista.setAtividade(StatusAtividade.ATIVO);
             return bolsistaRepository.save(bolsista);
         } else if (!verificaIdentificadorENumeroJaCadastrado(bolsista.getIdentificador(), bolsista.getNumeroIdentificador())) {
             return bolsistaRepository.save(bolsista);
@@ -51,8 +57,9 @@ public class BolsistaService {
     public void deletar(Long id) {
         Bolsista bolsista = buscarPorId(id);
         if (!verificaSeExistePagamentoPagoOuSolicitado(bolsista.getPagamentos())) {
-            deletaTodosPagamentosBolsista(id);
-            bolsistaRepository.delete(bolsista);
+            excluiLogicamenteTodosPagamentosBolsista(id);
+            bolsista.setAtividade(StatusAtividade.INATIVO);
+            bolsistaRepository.save(bolsista);
         } else {
             throw new NegocioException("O bolsista informado não pode ser excluído pois possui pagamento com o status: " + StatusPagamentoEnum.SOLICITADO.getDescricao() + " ou " + StatusPagamentoEnum.PAGO.getDescricao() + ".");
         }
@@ -62,8 +69,11 @@ public class BolsistaService {
         return pagamentos.stream().anyMatch(p -> StatusPagamentoEnum.SOLICITADO.equals(p.getStatus()) || StatusPagamentoEnum.PAGO.equals(p.getStatus()));
     }
 
-    void deletaTodosPagamentosBolsista(Long idBolsista) {
+    void excluiLogicamenteTodosPagamentosBolsista(Long idBolsista) {
         List<Pagamento> pagamentos = pagamentoRepository.findAllByBolsistaId(idBolsista);
-        pagamentos.stream().forEach(p -> pagamentoRepository.delete(p));
+        pagamentos.stream().forEach(p -> {
+            p.setStatus(StatusPagamentoEnum.CANCELADO);
+            pagamentoRepository.save(p);
+        });
     }
 }

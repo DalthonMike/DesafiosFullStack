@@ -23,6 +23,12 @@ export class PagamentoService {
         return this.http.get<any[]>(`${this.pathBase}/pagamento/todos`);
     }
 
+    listarTodosNaoCancelados(idBolsista: number) {
+        return this.http.get<any>(`${this.pathBase}/pagamento/${idBolsista}`, {
+            observe: 'response',
+        });
+    }
+
     listarStatusPagamento() {
         return this.http.get<any[]>(`${this.pathBase}/enums/status-pagamento`);
     }
@@ -46,7 +52,7 @@ export class PagamentoService {
     }
 
     deletar(id: number) {
-        return this.http.post<any>(`${this.pathBase}/pagamento/${id}`, {
+        return this.http.delete<any>(`${this.pathBase}/pagamento/${id}`, {
             observe: 'response',
         });
     }
