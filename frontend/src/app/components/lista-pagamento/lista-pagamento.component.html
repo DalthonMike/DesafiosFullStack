@@ -24,7 +24,9 @@
                                     type="button" style="width: 25%;
                                      float: right"
                                     label="Ver todos"
-                                    class="p-button-secondary p-button-text">
+                                    class="p-button-secondary p-button-text blinking-button"
+                                    (click)="listarPagamentosPorBolsistaId(dadosBolsista?.id)"
+                            >
                             </button>
                         </div>
                     </div>
@@ -58,12 +60,12 @@
                                 <button style="margin-right: 10px"
                                         pButton type="button"
                                         pTooltip="Editar"
-                                        icon="pi pi-pencil" (click)="editar(pagamentos)"
+                                        icon="pi pi-pencil" (click)="openModalEditarPagamento(pagamentos)"
                                         class="botoes-table p-button-rounded p-button-info p-button-outlined"></button>
                                 <button
                                         pButton type="button"
                                         pTooltip="Deletar"
-                                        icon="pi pi-trash" (click)="deletar(pagamentos)"
+                                        icon="pi pi-trash" (click)="deletar(pagamentos.id)"
                                         class="botoes-table p-button-outlined p-button-rounded p-button-danger"></button>
                             </ul>
                         </td>

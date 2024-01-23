@@ -23,6 +23,10 @@ export class BolsistaService {
         return this.http.get<any[]>(`${this.pathBase}/bolsista/todos`);
     }
 
+    listarTodosAtivos() {
+        return this.http.get<any[]>(`${this.pathBase}/bolsista`);
+    }
+
     listarTodosTiposIdentificadores() {
         return this.http.get<any[]>(`${this.pathBase}/enums/identificadores`);
     }

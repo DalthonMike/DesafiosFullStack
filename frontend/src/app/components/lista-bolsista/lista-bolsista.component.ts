@@ -29,11 +29,17 @@ export class ListaBolsistaComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.listarTodos();
+        this.listarTodosAtivos();
     }
 
     listarTodos(): void {
         this.bolsistaService.listarTodos().subscribe(response => {
+            this.bolsistas = response
+        })
+    }
+
+    listarTodosAtivos(): void {
+        this.bolsistaService.listarTodosAtivos().subscribe(response => {
             this.bolsistas = response
         })
     }
@@ -48,11 +54,11 @@ export class ListaBolsistaComponent implements OnInit {
             closeOnEscape: false,
             closable: false,
         }).onClose.subscribe(() => {
-            this.listarTodos();
+            this.listarTodosAtivos();
         });
     }
 
-    editar(bolsista: any) {
+    openModalEdicaoBolsista(bolsista: any) {
         this.dialogService.open(ModalEdicaoBolsistaComponent, {
             header: 'Editar Bolsista',
             width: 'auto',
@@ -63,7 +69,7 @@ export class ListaBolsistaComponent implements OnInit {
             closable: true,
             data: bolsista,
         }).onClose.subscribe(() => {
-            this.listarTodos();
+            this.listarTodosAtivos();
         });
     }
 
@@ -102,7 +108,7 @@ export class ListaBolsistaComponent implements OnInit {
                     })
                 },
                 () => {
-                    this.listarTodos();
+                    this.listarTodosAtivos();
                     this.toastr.success("Exclusão realizada com sucesso!", "success", {
                         timeOut: 3000,
                         progressBar: true
