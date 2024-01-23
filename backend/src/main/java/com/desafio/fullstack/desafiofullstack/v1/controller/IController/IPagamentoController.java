@@ -12,6 +12,9 @@ public interface IPagamentoController {
     @GetMapping("/todos")
     ResponseEntity<List<PagamentoResponse>> buscarTodos();
 
+    @GetMapping("/{idBolsista}")
+    ResponseEntity<List<PagamentoResponse>> buscarTodosNaoCancelados(@PathVariable Long idBolsista);
+
     @GetMapping("/bolsista/{idBolsista}")
     ResponseEntity<List<PagamentoResponse>> buscarPorIdBolsista(@PathVariable Long idBolsista);
 

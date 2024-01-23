@@ -1,6 +1,7 @@
 package com.desafio.fullstack.desafiofullstack.v1.converter.request;
 
 import com.desafio.fullstack.desafiofullstack.modelmapper.AbstractEntityMapper;
+import com.desafio.fullstack.desafiofullstack.v1.Enums.StatusAtividade;
 import com.desafio.fullstack.desafiofullstack.v1.dto.request.BolsistaRequest;
 import com.desafio.fullstack.desafiofullstack.v1.model.Bolsista;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,7 @@ public class BolsistaRequestConverter extends AbstractEntityMapper<BolsistaReque
                 .identificador(request.getIdentificador())
                 .banco(request.getBanco())
                 .numeroIdentificador(request.getNumeroIdentificador())
+                .atividade(StatusAtividade.ATIVO)
                 .build();
     }
 }

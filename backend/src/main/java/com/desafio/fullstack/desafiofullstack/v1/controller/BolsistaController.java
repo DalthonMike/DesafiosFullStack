@@ -30,7 +30,6 @@ public class BolsistaController implements IBolsistaController {
         this.bolsistaRequestConverter = bolsistaRequestConverter;
     }
 
-
     @Override
     public ResponseEntity<List<BolsistaResponse>> buscarTodos() {
         List<BolsistaResponse> bolsistaResponses = bolsistaResponseConverter.toResponse(bolsistaService.buscarTodos());
@@ -53,6 +52,12 @@ public class BolsistaController implements IBolsistaController {
     public ResponseEntity deletar(Long id) {
         bolsistaService.deletar(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @Override
+    public ResponseEntity<List<BolsistaResponse>> buscarTodosAtivos() {
+        List<BolsistaResponse> bolsistaResponses = bolsistaResponseConverter.toResponse(bolsistaService.buscarTodosAtivos());
+        return ResponseEntity.ok(bolsistaResponses);
     }
 
 }

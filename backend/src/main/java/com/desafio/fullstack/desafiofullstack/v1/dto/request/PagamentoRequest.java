@@ -5,7 +5,6 @@ import com.sun.istack.NotNull;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.time.LocalDate;
 
 @Data

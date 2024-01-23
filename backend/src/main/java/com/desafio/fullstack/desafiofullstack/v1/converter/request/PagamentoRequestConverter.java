@@ -13,9 +13,6 @@ import java.util.Objects;
 public class PagamentoRequestConverter extends AbstractEntityMapper<PagamentoRequest, Pagamento> {
 
     @Autowired
-    private BolsistaRequestConverter bolsistaRequestConverter;
-
-    @Autowired
     private BolsistaService bolsistaService;
 
     @Override

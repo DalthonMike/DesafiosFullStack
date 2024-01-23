@@ -20,4 +20,7 @@ public interface IBolsistaController {
 
     @DeleteMapping("/{id}")
     ResponseEntity deletar(@PathVariable Long id);
+
+    @GetMapping()
+    ResponseEntity<List<BolsistaResponse>> buscarTodosAtivos();
 }
