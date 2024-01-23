@@ -76,10 +76,9 @@
                             name="banco"
                             #banco="ngModel"
                             [(ngModel)]="resource.banco"
-                            [required]="!resource.banco"
-                            [ngClass]="{'ng-invalid ng-dirty': banco.invalid && banco.touched}"
+                            [ngClass]="{'ng-invalid ng-dirty': banco.touched}"
                             placeholder="Selecione" [style]="{ 'width': '100%' }"></p-dropdown>
-                <div *ngIf="banco.invalid && (banco.dirty || banco.touched)"
+                <div *ngIf="banco.touched"
                      class="alert" style="padding: 0; margin: 0">
                     <span class="alert-text">O campo é obrigatório!</span>
                 </div>

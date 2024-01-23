@@ -8,18 +8,15 @@
                 <h6>Data do pagamento:</h6>
             </div>
             <div class="col-12">
-                    <input
-                            pInputText
-                            id="dataPagamento"
-                            name="dataPagamento"
-                            [required]="true"
-                            [ngModel]="this.resource?.dataPagamento | date: 'dd/MM/yyyy'"
-                            placeholder="dd/MM/yyyy"
-                            #dataPagamento="ngModel"
-                            [ngClass]="{'ng-invalid ng-dirty': dataPagamento.invalid && dataPagamento.touched}"/>
-                <div *ngIf="dataPagamento.invalid && (dataPagamento.dirty || dataPagamento.touched)"
-                     class="alert" style="padding: 0; margin: 0">
-                    <span class="alert-text">O campo é obrigatório!</span>
+                <div>
+                    <div>
+                        <input type="text"
+                               id="dataPagamento"
+                               name="dataPagamento"
+                               class="form-control"
+                               ngModel="{{ resource?.dataPagamento | date:'dd/MM/yyyy' }}"
+                               pInputText disabled appApenasLetrasDirective/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,16 +48,9 @@
                     <input type="number"
                            id="valor"
                            name="valor"
-                           #valor="ngModel"
                            class="form-control"
                            ngModel="{{ resource?.valor }}"
-                           placeholder="Digite o número da agência"
-                           [ngClass]="{'ng-invalid ng-dirty': valor.invalid && valor.touched}"
-                           required pInputText appApenasNumerosDirective/>
-                </div>
-                <div *ngIf="valor.invalid && (valor.dirty || valor.touched)"
-                     class="alert" style="padding: 0; margin: 0">
-                    <span class="alert-text">O campo é obrigatório!</span>
+                           pInputText disabled appApenasLetrasDirective/>
                 </div>
             </div>
         </div>

@@ -1,26 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { DialogService } from "primeng/dynamicdialog";
+import {Component, OnInit} from '@angular/core';
+import {DialogService} from "primeng/dynamicdialog";
 
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalCadastroPagamentoComponent } from "../modals/pagamento/modal-cadastro-pagamento/modal-cadastro-pagamento.component";
 import { PagamentoModel } from "../../model/pagamento.model";
 import { PagamentoService } from "../../service/pagamento.service";
 import { ModalVisualizacaoPagamentoComponent } from "../modals/pagamento/modal-visualizacao-pagamento/modal-visualizacao-pagamento.component";
-import {ModalEdicaoPagamentoComponent} from "../modals/pagamento/modal-edicao-pagamento/modal-edicao-pagamento.component";
+import { ModalEdicaoPagamentoComponent } from "../modals/pagamento/modal-edicao-pagamento/modal-edicao-pagamento.component";
+import { StatusPagamentoEnum } from "../../enums/StatusPagamento.enum";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-lista-pagamento',
   templateUrl: './lista-pagamento.component.html',
   styleUrls: ['./lista-pagamento.component.css'],
+  providers: [ToastrService],
 })
 export class ListaPagamentoComponent implements OnInit {
 
   dadosBolsista: any;
   pagamentos: PagamentoModel[] = [];
 
+  statusPagamentoEnum = StatusPagamentoEnum;
+
   constructor(
       private dialogService: DialogService,
       private pagamentoService: PagamentoService,
+      private toastr: ToastrService,
       private router: Router,
       private route: ActivatedRoute
   ) {
@@ -52,19 +58,26 @@ export class ListaPagamentoComponent implements OnInit {
     });
   }
 
-  editar(bolsista: any) {
-    this.dialogService.open(ModalEdicaoPagamentoComponent, {
-      header: 'Editar Pagamento',
-      width: 'auto',
-      height: 'auto',
-      modal: true,
-      baseZIndex: 10000,
-      closeOnEscape: true,
-      closable: true,
-      data: bolsista,
-    }).onDestroy.subscribe(() => {
-      this.listarPagamentosPorBolsistaId(bolsista.idBolsista);
-    });
+  editar(bolsista: any, statusPagamento: any) {
+    if (statusPagamento !== StatusPagamentoEnum.PAGO && statusPagamento !== StatusPagamentoEnum.CANCELADO) {
+      this.dialogService.open(ModalEdicaoPagamentoComponent, {
+        header: 'Editar Pagamento',
+        width: 'auto',
+        height: 'auto',
+        modal: true,
+        baseZIndex: 10000,
+        closeOnEscape: true,
+        closable: true,
+        data: bolsista,
+      }).onDestroy.subscribe(() => {
+        this.listarPagamentosPorBolsistaId(bolsista.idBolsista);
+      });
+    } else {
+      this.toastr.error("Não é possível editar o pagamento com o status (PAGO ou CANCELADO)", "Atenção!", {
+        timeOut: 3000,
+        progressBar: true
+      });
+    }
   }
 
   visualizar(pagamentos: any) {

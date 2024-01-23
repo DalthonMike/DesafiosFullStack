@@ -37,13 +37,13 @@ export class ModalCadastroBolsistaComponent implements OnInit {
 
     onSubmit(bolsistaForm: NgForm) {
 
-        if (bolsistaForm.valid) {
+        if (bolsistaForm.valid && this.resource.banco) {
             this.salvar(bolsistaForm);
         } else {
             bolsistaForm.form["controls"]["nome"].markAsDirty();
             bolsistaForm.form["controls"]["identificador"].markAsDirty();
             bolsistaForm.form["controls"]["numeroIdentificador"].markAsDirty();
-            bolsistaForm.form["controls"]["banco"].markAsDirty();
+            bolsistaForm.form["controls"]["banco"].markAsTouched();
             bolsistaForm.form["controls"]["numeroAgencia"].markAsDirty();
             bolsistaForm.form["controls"]["numeroConta"].markAsDirty();
         }
@@ -81,6 +81,6 @@ export class ModalCadastroBolsistaComponent implements OnInit {
     }
 
     cancelar() {
-        this.dialogRef.close({ cancelamento: true });
+        this.dialogRef.destroy();
     }
 }

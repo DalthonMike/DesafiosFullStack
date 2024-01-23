@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 import { PagamentoModel } from "../../../../model/pagamento.model";
 import { PagamentoService } from "../../../../service/pagamento.service";
+import { StatusPagamentoEnum } from "../../../../enums/StatusPagamento.enum";
 
 @Component({
     selector: 'app-modal-edicao-pagamento',
@@ -17,6 +18,8 @@ export class ModalEdicaoPagamentoComponent implements OnInit {
     public resource = new PagamentoModel();
     private idBolsista: number;
     private idPagamento: number;
+    private dataPagamanto: any;
+    private valor: any;
 
     statusPagamento: any;
 
@@ -31,13 +34,19 @@ export class ModalEdicaoPagamentoComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.resource = this.dialogConfig.data;
-        this.idBolsista = this.dialogConfig.data?.idBolsista;
-        this.idPagamento = this.dialogConfig.data?.id;
+        this.processarDados();
 
         this.listarStatusPagamento(this.resource?.status);
 
         console.log('dadosPagamento', this.resource);
+    }
+
+    private processarDados() {
+        this.resource = this.dialogConfig.data;
+        this.idBolsista = this.dialogConfig.data?.idBolsista;
+        this.idPagamento = this.dialogConfig.data?.id;
+        this.dataPagamanto = this.dialogConfig.data?.dataPagamento;
+        this.valor = this.dialogConfig.data?.valor;
     }
 
     onSubmit(pagamentoForm: NgForm) {
@@ -56,8 +65,8 @@ export class ModalEdicaoPagamentoComponent implements OnInit {
         this.resource = pagamentoForm.value;
         this.resource.idBolsista = this.idBolsista;
         this.resource.id = this.idPagamento;
-        let partes = pagamentoForm.value.dataPagamento.split('/');
-        this.resource.dataPagamento = new Date(partes[2], partes[1] - 1, partes[0]);
+        this.resource.dataPagamento = new Date(this.dataPagamanto);
+        this.resource.valor = this.valor;
 
         this.pagamentoService.editar(this.resource).subscribe(response => {
             if (response.status == 204) {
@@ -87,16 +96,12 @@ export class ModalEdicaoPagamentoComponent implements OnInit {
     private verificarStatusDisponiveis(statusAtual: string) {
 
         switch (statusAtual) {
-            case StatusPagamento.NAO_REALIZADO:
-                this.statusPagamento = this.statusPagamento.filter((status: StatusPagamento) => status !== StatusPagamento.PAGO && status !== StatusPagamento.NAO_REALIZADO);
+            case StatusPagamentoEnum.NAO_REALIZADO:
+                this.statusPagamento = this.statusPagamento.filter((status: StatusPagamentoEnum) => status !== StatusPagamentoEnum.PAGO && status !== StatusPagamentoEnum.NAO_REALIZADO);
                 break;
+
+            case StatusPagamentoEnum.SOLICITADO:
+                this.statusPagamento = this.statusPagamento.filter((status: StatusPagamentoEnum) => status !== StatusPagamentoEnum.SOLICITADO && status !== StatusPagamentoEnum.NAO_REALIZADO);
         }
     }
-}
-
-enum StatusPagamento {
-    NAO_REALIZADO = 'NAO_REALIZADO',
-    PAGO = 'PAGO',
-    SOLICITADO = 'SOLICITADO',
-    CANCELADO = 'CANCELADO',
 }
