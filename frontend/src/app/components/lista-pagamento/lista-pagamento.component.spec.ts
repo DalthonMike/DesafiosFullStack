@@ -6,7 +6,7 @@ import { BolsistaService } from "../../service/bolsista.service";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterTestingModule } from "@angular/router/testing";
 import { ConfirmationService } from "primeng/api";
-import {ToastrService} from "ngx-toastr";
+import { ToastrModule, ToastrService } from "ngx-toastr";
 
 describe('ListaPagamentoComponent', () => {
   let component: ListaPagamentoComponent;
@@ -18,7 +18,8 @@ describe('ListaPagamentoComponent', () => {
       providers: [DialogService, BolsistaService, ConfirmationService, ToastrService],
       imports: [
         HttpClientModule,
-        RouterTestingModule
+        RouterTestingModule,
+        ToastrModule.forRoot()
       ]
     })
     .compileComponents();

@@ -36,7 +36,7 @@ export class ListaPagamentoComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       const objetoSerializado = params['dados'];
-      this.dadosBolsista = JSON.parse(decodeURIComponent(objetoSerializado));
+      this.dadosBolsista = JSON?.parse(decodeURIComponent(objetoSerializado));
 
       console.log("dadosBolsista", this.dadosBolsista);
     });
