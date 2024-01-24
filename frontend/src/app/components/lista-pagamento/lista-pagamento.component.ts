@@ -36,9 +36,7 @@ export class ListaPagamentoComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       const objetoSerializado = params['dados'];
-      this.dadosBolsista = JSON.parse(decodeURIComponent(objetoSerializado));
-
-      console.log("dadosBolsista", this.dadosBolsista);
+      this.dadosBolsista = JSON?.parse(decodeURIComponent(objetoSerializado));
     });
 
     this.listarTodosNaoCancelados(this.dadosBolsista?.id);
@@ -106,19 +104,15 @@ export class ListaPagamentoComponent implements OnInit {
               })
             },
             () => {
-              this.listarTodosNaoCancelados(this.dadosBolsista?.id);
+              if (this.dadosBolsista && this.dadosBolsista.id) {
+                this.listarTodosNaoCancelados(this.dadosBolsista.id);
+              }
               this.toastr.success("Exclusão realizada com sucesso!", "success", {
                 timeOut: 3000,
                 progressBar: true
               })
             }
         )
-  }
-
-  listarTodos(): void {
-    this.pagamentoService.listarTodos().subscribe(response => {
-      this.pagamentos = response;
-    })
   }
 
   listarPagamentosPorBolsistaId(idBolsista: number): any {

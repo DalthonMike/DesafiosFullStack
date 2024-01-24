@@ -26,8 +26,6 @@ export class ModalVisualizacaoPagamentoComponent implements OnInit {
 
     ngOnInit(): void {
         this.dadosPagamento = this.dialogConfig.data;
-
-        console.log('dadosPagamento', this.dadosPagamento);
     }
 
     sair() {

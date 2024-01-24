@@ -9,7 +9,7 @@ import { BolsistaModel } from "../model/bolsista.model";
 export class BolsistaService {
 
     protected http: HttpClient;
-    private pathBase: string = environment.apiUrl;
+    public pathBase: string = environment.apiUrl;
 
     constructor(http: HttpClient) {
         this.http = http;

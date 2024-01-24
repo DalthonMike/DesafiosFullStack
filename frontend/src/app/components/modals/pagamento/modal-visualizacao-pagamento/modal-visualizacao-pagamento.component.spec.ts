@@ -21,6 +21,7 @@ import { ToastrModule } from "ngx-toastr";
 describe('ModalVisualizacaoPagamentoComponent', () => {
   let component: ModalVisualizacaoPagamentoComponent;
   let fixture: ComponentFixture<ModalVisualizacaoPagamentoComponent>;
+  let dialogRef = new DynamicDialogRef();
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -29,8 +30,13 @@ describe('ModalVisualizacaoPagamentoComponent', () => {
           DialogService,
           BolsistaService,
           NoopAnimationsModule,
-          DynamicDialogRef,
-          DynamicDialogConfig],
+          DynamicDialogConfig,
+        {
+          provide: DynamicDialogRef,
+          useValue: {
+            close: jasmine.createSpy('close'),
+          },
+        },],
       imports: [
         BrowserAnimationsModule,
         BrowserModule,
@@ -60,5 +66,12 @@ describe('ModalVisualizacaoPagamentoComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should do something with dialogRef', () => {
+    const component = fixture.componentInstance;
+    component.sair();
+
+    expect(dialogRef.close()).toBe();
   });
 });

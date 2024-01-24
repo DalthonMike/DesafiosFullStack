@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 
 import { ModalEdicaoPagamentoComponent } from './modal-edicao-pagamento.component';
 import { BrowserAnimationsModule, NoopAnimationsModule } from "@angular/platform-browser/animations";
@@ -11,7 +11,7 @@ import { TooltipModule } from "primeng/tooltip";
 import { DialogModule } from "primeng/dialog";
 import { DropdownModule } from "primeng/dropdown";
 import { DialogService, DynamicDialogConfig, DynamicDialogModule, DynamicDialogRef } from "primeng/dynamicdialog";
-import { FormsModule } from "@angular/forms";
+import {FormsModule, NgForm} from "@angular/forms";
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { InputTextModule } from "primeng/inputtext";
@@ -50,6 +50,7 @@ describe('ModalEdicaoPagamentoComponent', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
         .compileComponents();
+
   });
 
   beforeEach(() => {
@@ -61,4 +62,26 @@ describe('ModalEdicaoPagamentoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call salvar when form is valid', fakeAsync(() => {
+    spyOn(component, 'salvar');
+    const pagamentoForm: NgForm = { valid: true } as NgForm;
+
+    component.onSubmit(pagamentoForm);
+
+    tick();
+
+    expect(component.salvar).toHaveBeenCalled();
+  }));
+
+  it('should call dialogRef.destroy() on cancelar', () => {
+
+    let dialogRef = TestBed.inject(DynamicDialogRef);
+    spyOn(dialogRef, 'destroy');
+
+    component.cancelar();
+
+    expect(dialogRef.destroy).toHaveBeenCalled();
+  });
+
 });

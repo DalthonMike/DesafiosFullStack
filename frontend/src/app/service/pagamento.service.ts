@@ -9,7 +9,7 @@ import { PagamentoModel } from "../model/pagamento.model";
 export class PagamentoService {
 
     protected http: HttpClient;
-    private pathBase: string = environment.apiUrl;
+    public pathBase: string = environment.apiUrl;
 
     constructor(http: HttpClient) {
         this.http = http;
