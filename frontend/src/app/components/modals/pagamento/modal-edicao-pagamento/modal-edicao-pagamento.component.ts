@@ -16,10 +16,10 @@ import { StatusPagamentoEnum } from "../../../../enums/StatusPagamento.enum";
 export class ModalEdicaoPagamentoComponent implements OnInit {
 
     public resource = new PagamentoModel();
-    private idBolsista: number;
-    private idPagamento: number;
-    private dataPagamanto: any;
-    private valor: any;
+    public idBolsista: number;
+    public idPagamento: number;
+    public dataPagamanto: any;
+    public valor: any;
 
     statusPagamento: any;
 
@@ -37,8 +37,6 @@ export class ModalEdicaoPagamentoComponent implements OnInit {
         this.processarDados();
 
         this.listarStatusPagamento(this.resource?.status);
-
-        console.log('dadosPagamento', this.resource);
     }
 
     private processarDados() {
@@ -93,7 +91,7 @@ export class ModalEdicaoPagamentoComponent implements OnInit {
         this.dialogRef.destroy();
     }
 
-    private verificarStatusDisponiveis(statusAtual: string) {
+    public verificarStatusDisponiveis(statusAtual: string) {
 
         switch (statusAtual) {
             case StatusPagamentoEnum.NAO_REALIZADO:

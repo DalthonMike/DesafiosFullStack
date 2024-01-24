@@ -21,7 +21,7 @@ export class ListaBolsistaComponent implements OnInit {
 
     constructor(
         private dialogService: DialogService,
-        private bolsistaService: BolsistaService,
+        public bolsistaService: BolsistaService,
         private router: Router,
         private toastr: ToastrService,
         private confirmationService: ConfirmationService

@@ -66,7 +66,6 @@ export class ModalCadastroPagamentoComponent implements OnInit {
     listarStatusPagamento(): void {
         this.pagamentoService.listarStatusPagamento().subscribe(response => {
             this.statusPagamento = response;
-            console.log(this.statusPagamento)
         });
     }
 
