@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h6>Data do pagamento:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <input type="text"
+                       id="dataPagamento"
+                       name="dataPagamento"
+                       class="form-control"
+                       ngModel="{{ dadosPagamento?.dataPagamento | date:'dd/MM/yyyy' }}"
+                       pInputText disabled/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-5">
+            <h6>Status do pagamento:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <input type="text"
+                       id="status"
+                       name="status"
+                       class="form-control"
+                       ngModel="{{ dadosPagamento?.status }}"
+                       pInputText disabled appApenasLetrasDirective/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-5">
+            <h6>Valor:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <input type="text"
+                       id="valor"
+                       name="valor"
+                       class="form-control"
+                       ngModel="{{ dadosPagamento?.valor }}"
+                       pInputText disabled appApenasLetrasDirective/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 10px">
+        <div class="col">
+            <button pButton pRipple
+                    label="Sair"
+                    style="float: right"
+                    (click)="sair()"
+                    class="p-button-secondary"
+                    icon="pi pi-times"></button>
+        </div>
+    </div>
+</div>
+

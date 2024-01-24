@@ -1,0 +1,15 @@
+.header {
+    background-color: #F8F9FA;
+    margin: 0;
+    padding: 5px;
+}
+
+.header-icon {
+    margin-left: 10px;
+    padding-left: 0;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: inherit;
+}

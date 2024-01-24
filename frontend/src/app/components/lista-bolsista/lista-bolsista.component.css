@@ -1,0 +1,24 @@
+.table-lista {
+    margin: 5vh;
+    min-width: 70%;
+}
+
+.card-header {
+    padding: 0;
+}
+
+.botoes-table {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+}
+
+@keyframes blinking {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+.blinking-button {
+    animation: blinking 1s infinite;
+}

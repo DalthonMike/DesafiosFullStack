@@ -1,0 +1,120 @@
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <h6>Nome:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <input type="text"
+                       id="nome"
+                       name="nome"
+                       class="form-control"
+                       ngModel="{{ dadosBolsista?.nome }}"
+                       pInputText disabled appApenasLetrasDirective/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-5">
+            <h6>Tipo de identificador:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <input type="text"
+                       id="identificador"
+                       name="identificador"
+                       class="form-control"
+                       ngModel="{{ dadosBolsista?.identificador }}"
+                       pInputText disabled appApenasLetrasDirective/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-5">
+            <h6>Tipo de identificador:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <input type="text"
+                       id="numeroIdentificador"
+                       name="numeroIdentificador"
+                       class="form-control"
+                       ngModel="{{ dadosBolsista?.numeroIdentificador }}"
+                       pInputText disabled appApenasLetrasDirective/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-5">
+            <h6>Banco:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <input type="text"
+                       id="banco"
+                       name="banco"
+                       class="form-control"
+                       ngModel="{{ dadosBolsista?.banco }}"
+                       pInputText disabled appApenasLetrasDirective/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-2">
+            <h6>Agência:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <div>
+                    <input type="text"
+                           id="numeroAgencia"
+                           name="numeroAgencia"
+                           class="form-control"
+                           ngModel="{{ dadosBolsista?.numeroAgencia }}"
+                           pInputText disabled appApenasLetrasDirective/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-5">
+            <h6>Conta:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <input type="text"
+                       id="numeroConta"
+                       name="numeroConta"
+                       class="form-control"
+                       ngModel="{{ dadosBolsista?.numeroConta }}"
+                       pInputText disabled appApenasLetrasDirective/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-5">
+            <h6>Data de cadastro:</h6>
+        </div>
+        <div class="col-12">
+            <div>
+                <input type="text"
+                       id="conta"
+                       name="conta"
+                       class="form-control"
+                       ngModel="{{ dadosBolsista?.dataCadastro | date:'dd/MM/yyyy' }}"
+                       pInputText disabled appApenasLetrasDirective/>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 10px">
+        <div class="col">
+            <button pButton pRipple
+                    label="Sair"
+                    style="float: right"
+                    (click)="sair()"
+                    class="p-button-secondary"
+                    icon="pi pi-times"></button>
+        </div>
+    </div>
+</div>
+

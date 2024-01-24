@@ -1,0 +1,66 @@
+<form class="needs-validation"
+      name="pagamentoForm"
+      #pagamentoForm="ngForm"
+      (ngSubmit)="onSubmit(pagamentoForm)">
+    <div class="container" style="overflow: hidden;">
+        <div class="row">
+            <div class="col-4">
+                <h6>Data do pagamento:</h6>
+            </div>
+            <div class="col-12">
+                <div>
+                    <input type="date"
+                           id="dataPagamento"
+                           name="dataPagamento"
+                           #dataPagamento="ngModel"
+                           class="form-control"
+                           [(ngModel)]="resource.dataPagamento"
+                           [ngClass]="{'ng-invalid ng-dirty': dataPagamento.invalid && dataPagamento.touched}"
+                           required pInputText/>
+                </div>
+                <div *ngIf="dataPagamento.invalid && (dataPagamento.dirty || dataPagamento.touched)"
+                     class="alert" style="padding: 0; margin: 0">
+                    <span class="alert-text">O campo é obrigatório!</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <h6>Valor:</h6>
+            </div>
+            <div class="col-12">
+                <div>
+                    <input type="text"
+                           id="valor"
+                           name="valor"
+                           #valor="ngModel"
+                           class="form-control"
+                           [(ngModel)]="resource.valor"
+                           placeholder="Digite o valor aqui"
+                           [ngClass]="{'ng-invalid ng-dirty': valor.invalid && valor.touched}"
+                           required pInputText appApenasNumerosDirective/>
+                </div>
+                <div *ngIf="valor.invalid && (valor.dirty || valor.touched)"
+                     class="alert" style="padding: 0; margin: 0">
+                    <span class="alert-text">O campo é obrigatório!</span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col">
+                <button pButton pRipple
+                        label="Cancelar"
+                        (click)="cancelar()"
+                        float="left"
+                        class="p-button-secondary" style="float: right; flex: 1 1 auto"
+                        icon="pi pi-times"></button>
+            </div>
+            <div class=".col-auto">
+                <button pButton pRipple
+                        label="Salvar"
+                        type="submit" style="float: right; margin-right: 15px"
+                        icon="pi pi-check"></button>
+            </div>
+        </div>
+    </div>
+</form>

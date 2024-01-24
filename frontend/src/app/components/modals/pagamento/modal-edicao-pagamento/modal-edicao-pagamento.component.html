@@ -1,0 +1,74 @@
+<form class="needs-validation"
+      name="bolsistaForm"
+      #pagamentoForm="ngForm"
+      (ngSubmit)="onSubmit(pagamentoForm)">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <h6>Data do pagamento:</h6>
+            </div>
+            <div class="col-12">
+                <div>
+                    <div>
+                        <input type="text"
+                               id="dataPagamento"
+                               name="dataPagamento"
+                               class="form-control"
+                               ngModel="{{ resource?.dataPagamento | date:'dd/MM/yyyy' }}"
+                               pInputText disabled appApenasLetrasDirective/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-5">
+                <h6>Status do pagamento:</h6>
+            </div>
+            <div class="col-12">
+                <p-dropdown [options]="statusPagamento"
+                            id="status"
+                            name="status"
+                            #status="ngModel"
+                            ngModel="{{ resource?.status }}"
+                            [required]="!resource?.status"
+                            [ngClass]="{'ng-invalid ng-dirty': status.invalid && status.touched}"
+                            placeholder="Selecione" [style]="{ 'width': '100%' }"></p-dropdown>
+                <div *ngIf="status.invalid && (status.dirty || status.touched)"
+                     class="alert" style="padding: 0; margin: 0">
+                    <span class="alert-text">O campo é obrigatório!</span>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-2">
+                <h6>Valor:</h6>
+            </div>
+            <div class="col-12">
+                <div>
+                    <input type="number"
+                           id="valor"
+                           name="valor"
+                           class="form-control"
+                           ngModel="{{ resource?.valor }}"
+                           pInputText disabled appApenasLetrasDirective/>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col">
+                <button pButton pRipple
+                        label="Cancelar"
+                        (click)="cancelar()"
+                        float="left"
+                        class="p-button-secondary" style="float: right; flex: 1 1 auto"
+                        icon="pi pi-times"></button>
+            </div>
+            <div class=".col-auto">
+                <button pButton pRipple
+                        label="Salvar"
+                        type="submit" style="float: right; margin-right: 15px"
+                        icon="pi pi-check"></button>
+            </div>
+        </div>
+    </div>
+</form>

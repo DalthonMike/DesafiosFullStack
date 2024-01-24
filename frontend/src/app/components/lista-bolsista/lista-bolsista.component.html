@@ -1,0 +1,88 @@
+<div class="table-lista" style="padding-left: 50px; padding-right: 50px">
+    <div class="row">
+        <div class="col-12 mb-3 mb-lg-5">
+            <div class="row">
+                <div class="col" style="margin-bottom: 10px">
+                    <button type="button" class="btn btn-primary" (click)="openModalCadastroBolsista()" style="float: right">
+                        Adicionar bolsista
+                    </button>
+                </div>
+            </div>
+            <p-table class="card" [value]="bolsistas" styleClass="p-datatable-sm" responsiveLayout="scroll">
+                <ng-template pTemplate="caption">
+                    <div class="row flex align-items-center justify-content-between">
+                        <div class="col-6">
+                            <h5 style="margin-bottom: 5px;">Lista de bolsistas</h5>
+                        </div>
+                        <div class="col-6">
+                            <button pButton pRipple
+                                    type="button" style="width: 20%;
+                                     float: right"
+                                    label="Ver todos"
+                                    class="p-button-secondary p-button-text blinking-button"
+                                    (click)="listarTodos()"
+                            >
+                            </button>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr class="small">
+                        <th style="font-weight: bold">NOME</th>
+                        <th style="font-weight: bold">TIPO DE IDENTIFICADOR</th>
+                        <th style="font-weight: bold">NÚMERO DO INDENTIFICADOR</th>
+                        <th style="font-weight: bold">DADOS BANCÁRIOS</th>
+                        <th style="font-weight: bold">DATA DO CADASTRO</th>
+                        <th style="font-weight: bold">ATIVIDADE</th>
+                        <th style="font-weight: bold; text-align: center">AÇÕES</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-bolsista>
+                    <tr>
+                        <td>{{ bolsista.nome }}</td>
+                        <td>{{ bolsista.identificador }}</td>
+                        <td>{{ bolsista.numeroIdentificador }}</td>
+                        <td>{{ bolsista.banco }} - {{ bolsista.numeroAgencia }}/{{ bolsista.numeroConta }}</td>
+                        <td>{{ bolsista.dataCadastro | date:'dd/MM/yyyy'}}</td>
+                        <td>{{ bolsista.atividade }}</td>
+                        <td>
+                            <ul style="justify-content: center" class="list-unstyled mb-0 d-flex">
+                                <button style="margin-right: 10px"
+                                        pButton type="button"
+                                        pTooltip="Visualizar"
+                                        icon="pi pi-eye" (click)="visualizar(bolsista)"
+                                        class="botoes-table p-button-rounded p-button-help p-button-outlined"
+                                        *ngIf="bolsista.atividade === 'ATIVO'"
+                                ></button>
+
+                                <button style="margin-right: 10px"
+                                        pButton type="button"
+                                        pTooltip="Editar"
+                                        icon="pi pi-pencil" (click)="openModalEdicaoBolsista(bolsista)"
+                                        class="botoes-table p-button-rounded p-button-info p-button-outlined"
+                                        *ngIf="bolsista.atividade === 'ATIVO'"
+                                ></button>
+                                <button
+                                        pButton type="button"
+                                        pTooltip="Excluir"
+                                        icon="pi pi-trash" (click)="confirmarExclusao(bolsista.id)"
+                                        class="botoes-table p-button-outlined p-button-rounded p-button-danger"
+                                        [disabled]="verificaSeExistePagamentoPagoOuSolicitado(bolsista)"
+                                        *ngIf="bolsista.atividade === 'ATIVO'"
+                                ></button>
+                                <button style="margin-left: 10px"
+                                        pButton type="button"
+                                        pTooltip="pagamentos"
+                                        icon="pi pi-dollar" (click)="gerenciarPagamentos(bolsista)"
+                                        class="botoes-table p-button-outlined p-button-rounded p-button-success"
+                                        *ngIf="bolsista.atividade === 'ATIVO'"
+                                ></button>
+                            </ul>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
+<p-confirmDialog></p-confirmDialog>
